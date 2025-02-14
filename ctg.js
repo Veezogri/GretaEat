@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (category) {
         fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`).then(response => response.json()).then(data => {
             console.log(data);
-            const mealsContainer = document.getElementById("meal-details");
+            const mealsContainer = document.getElementById("meals-container");
             mealsContainer.innerHTML = "";
             if (data.meals) {
                 data.meals.forEach(meal => {
@@ -24,8 +24,6 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("meals-container").innerHTML = "<p>Aucune catégorie spécifiée.</p>";
     }
 });
-
-
         
 
 
