@@ -30,3 +30,8 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("meal-details").innerHTML = "<p>Veuillez fournir un identifiant de plat valide dans l'URL.</p>";
     }
 });
+
+
+
+
+

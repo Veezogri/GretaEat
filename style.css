@@ -92,4 +92,24 @@ footer {
 }
 
 
-/* page html categorie */ 
+/* page html firstletter */ 
+
+#alphabet-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 20px 0;
+}
+.alphabet-button {
+	margin: 5px;
+	padding: 10px 15px;
+	background-color: #ff5733;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+}
+.alphabet-button:hover {
+	background-color: #e04e2a;
+}
