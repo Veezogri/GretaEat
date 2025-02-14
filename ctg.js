@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("meals-container").innerHTML = "<p>Aucune catégorie spécifiée.</p>";
     }
 });
-        
+
+
 
 
 

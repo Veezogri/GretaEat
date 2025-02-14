@@ -32,6 +32,40 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
+document.addEventListener("DOMContentLoaded", function() {
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category") || "";
+    const letter = params.get("letter") || "";
+    const searchQuery = params.get("search") || "";
+    let apiUrl = "";
+    if (category) {
+        apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
+    } else if (letter) {
+        apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`;
+    } else if (searchQuery) {
+        apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`;
+    }
+    if (apiUrl) {
+        fetch(apiUrl).then(response => response.json()).then(data => {
+            const mealsContainer = document.getElementById("meals-container");
+            mealsContainer.innerHTML = "";
+            if (data.meals) {
+                data.meals.forEach(meal => {
+                    const mealCard = document.createElement("div");
+                    mealCard.classList.add("meal-card");
+                    mealCard.innerHTML = ` <img src="${meal.strMealThumb}" alt="${meal.strMeal}"> <h3>${meal.strMeal}</h3> <a href="meal.html?id=${meal.idMeal}" class="btn">Voir la recette</a> `;
+                    mealsContainer.appendChild(mealCard);
+                });
+            } else {
+                mealsContainer.innerHTML = "<p>Aucun plat trouvé.</p>";
+            }
+        }).catch(error => {
+            console.error("Erreur lors de la récupération des plats :", error);
+            document.getElementById("meals-container").innerHTML = "<p>Une erreur est survenue.</p>";
+        });
+    } else {
+        document.getElementById("meals-container").innerHTML = "<p>Veuillez sélectionner une catégorie, une lettre ou entrer une recherche.</p>";
+    }
+});
 
 
