@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     loadMealDetails();
     setupAlphabetButtons();
     setupSearchFunctionality();
+    LoadAreas();
+    fetchMealsByArea();
 });
 
 // 🟢 Fonction pour charger un plat aléatoire
@@ -286,4 +288,91 @@ function setupEventListeners() {
         randomBtn.addEventListener("click", loadRandomMeal);
     }
 }
+
+
+// 🟢 Fonction pour lister les zones géographiques 
+async function LoadAreas() {
+    try {
+        const response = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list");
+        const data = await response.json();
+
+        const areasContainer = document.getElementById("areas-container");
+        if (!areasContainer) return;
+
+        areasContainer.innerHTML = "";
+
+        if (!data.meals) {
+            areasContainer.innerHTML = "<p>Aucune zone trouvée.</p>";
+            return;
+        }
+
+        data.meals.forEach(area => {
+            const areaCard = document.createElement("div");
+            areaCard.classList.add("area-card");
+            const areaTitle = document.createElement("h3");
+            areaTitle.textContent = area.strArea;
+        
+            // Création du bouton
+            const button = document.createElement("button");
+            button.classList.add("btn");
+            button.textContent = "Voir les plats";
+            
+            // ✅ Ajout de l'événement au lieu de `onclick`
+            button.addEventListener("click", () => {
+                fetchMealsByArea(area.strArea);
+            });
+            areaCard.appendChild(areaTitle);
+            areaCard.appendChild(button);
+        
+            // Ajout de la carte au conteneur
+            areasContainer.appendChild(areaCard);
+        });
+
+    } catch (error) {
+        console.error("Erreur lors de la récupération des zones :", error);
+        document.getElementById("areas-container").innerHTML = "<p>Une erreur s'est produite lors de la récupération des zones.</p>";
+    }
+}
+
+
+
+// 🟢 Fonction pour filter les plats par zone géographique
+
+async function fetchMealsByArea(area) {
+    try {
+        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
+        const data = await response.json();
+
+        const mealsContainer = document.getElementById("meals-container");
+        if (!mealsContainer) return;
+
+        mealsContainer.innerHTML = "";
+
+        if (!data.meals) {
+            mealsContainer.innerHTML = "<p>Aucun plat trouvé pour cette zone géographique.</p>";
+            return;
+        }
+
+        data.meals.forEach(meal => {
+            const mealCard = document.createElement("div");
+            mealCard.classList.add("meal-card");
+            mealCard.innerHTML = `
+                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                <h3>${meal.strMeal}</h3>
+                <a href="meal.html?id=${meal.idMeal}" class="btn">Voir la recette</a>
+            `;
+            mealsContainer.appendChild(mealCard);
+        });
+
+    } catch (error) {
+        console.error("Erreur lors de la récupération des plats :", error);
+        document.getElementById("meals-container").innerHTML = "<p>Une erreur s'est produite lors de la récupération des plats.</p>";
+    }
+}
+
+
+
+
+
+
 
