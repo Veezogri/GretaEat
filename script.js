@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupSearchFunctionality();
     LoadAreas();
     fetchMealsByArea();
+    MealsByIngredient();
 });
 
 // 🟢 Fonction pour charger un plat aléatoire
@@ -370,6 +371,44 @@ async function fetchMealsByArea(area) {
     }
 }
 
+// 🟢 Fonction pour afficher sous forme de vignettes, les plats appartenant à un ingrédient passé en paramètre dans l’URL. 
+
+async function MealsByIngredient(ingredient){
+    try{
+        const reponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+        const data = await reponse.json();
+        const mealsContainer = document.getElementById("meals-container");
+        if (!mealsContainer) return;
+
+        mealsContainer.innerHTML = "";
+
+        if (!data.meals) {
+            mealsContainer.innerHTML = "<p>Aucun plat trouvé pour cet ingrédient.</p>";
+            return;
+        }
+
+        data.meals.forEach(meal => {
+            const mealCard = document.createElement("div");
+            mealCard.classList.add("meal-card");
+            mealCard.innerHTML = `
+                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                <h3>${meal.strMeal}</h3>
+                <a href="meal.html?id=${meal.idMeal}" class="btn">Voir la recette</a>
+            `;
+            mealsContainer.appendChild(mealCard);
+        });
+
+
+
+
+
+    }
+
+    catch (error) {
+        console.error("Erreur lors de la récupération des plats :", error);
+        document.getElementById("meals-container").innerHTML = "<p>Une erreur s'est produite lors de la récupération des plats.</p>";
+    }
+}
 
 
 
