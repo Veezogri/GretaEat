@@ -7,9 +7,27 @@ document.addEventListener("DOMContentLoaded", () => {
     setupAlphabetButtons();
     setupSearchFunctionality();
     LoadAreas();
-    fetchMealsByArea();
-    MealsByIngredient();
+
+    // ✅ Exécuter fetchMealsByArea() UNIQUEMENT si on est sur area.html
+    if (window.location.href.includes("area.html")) {
+        fetchMealsByArea();
+    }
+
+    // ✅ Exécuter MealsByIngredient() UNIQUEMENT si on est sur ingredient.html
+    if (window.location.href.includes("ingredient.html")) {
+        const params = new URLSearchParams(window.location.search);
+        const ingredient = params.get("ingredient");
+
+        console.log("Ingrédient récupéré depuis l’URL :", ingredient);
+
+        if (ingredient) {
+            MealsByIngredient(ingredient);
+        } else {
+            document.getElementById("meals-container").innerHTML = "<p>Aucun ingrédient spécifié.</p>";
+        }
+    }
 });
+
 
 // 🟢 Fonction pour charger un plat aléatoire
 async function loadRandomMeal() {
@@ -373,11 +391,17 @@ async function fetchMealsByArea(area) {
 
 // 🟢 Fonction pour afficher sous forme de vignettes, les plats appartenant à un ingrédient passé en paramètre dans l’URL. 
 
+
 async function MealsByIngredient(ingredient){
+    console.log("Ingrédient reçu :", ingredient); // ✅ Vérifier si l’ingrédient est bien passé
+
     try{
         const reponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
         const data = await reponse.json();
-        console.log(data);
+
+        console.log("URL API :", `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`); // ✅ Vérifier l'URL de la requête
+        console.log("Données API :", data); // ✅ Vérifier la réponse API
+
         const mealsContainer = document.getElementById("meals-container");
         if (!mealsContainer) return;
 
@@ -399,17 +423,15 @@ async function MealsByIngredient(ingredient){
             mealsContainer.appendChild(mealCard);
         });
 
-
-
-
-
     }
-
     catch (error) {
         console.error("Erreur lors de la récupération des plats :", error);
         document.getElementById("meals-container").innerHTML = "<p>Une erreur s'est produite lors de la récupération des plats.</p>";
     }
 }
+
+
+
 
 
 
