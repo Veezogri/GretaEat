@@ -165,24 +165,37 @@ async function loadMealDetails() {
         const meal = data.meals[0];
         document.getElementById("meal-name").textContent = meal.strMeal;
 
-        let ingredients = "";
+        let ingredientsList = "";
+        let footerLinks = "";
+
         for (let i = 1; i <= 20; i++) {
             const ingredient = meal[`strIngredient${i}`];
             const measure = meal[`strMeasure${i}`];
             if (ingredient) {
-                ingredients += `<li>${ingredient} - ${measure}</li>`;
+                // ✅ Création de la liste des ingrédients
+                ingredientsList += `<li>${ingredient} - ${measure}</li>`;
+                // ✅ Création du lien dans le footer
+                footerLinks += `<a href="ingredient.html?ingredient=${encodeURIComponent(ingredient)}" class="btn">${ingredient}</a> `;
             }
         }
 
+        // ✅ Affichage du plat
         document.getElementById("meal-details").innerHTML = `
             <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-            <h3>Catégorie : ${meal.strCategory}</h3>
-            <h3>Origine : ${meal.strArea}</h3>
+            <h3>Catégorie : <a href="categorie.html?category=${encodeURIComponent(meal.strCategory)}">${meal.strCategory}</a></h3>
+            <h3>Origine : <a href="area.html?area=${encodeURIComponent(meal.strArea)}">${meal.strArea}</a></h3>
             <h3>Ingrédients :</h3>
-            <ul>${ingredients}</ul>
+            <ul>${ingredientsList}</ul>
             <h3>Instructions :</h3>
             <p>${meal.strInstructions}</p>
         `;
+
+        // ✅ Ajout des liens des ingrédients dans le footer
+        document.getElementById("meal-footer").innerHTML = `
+            <h3>Voir d'autres recettes avec ces ingrédients :</h3>
+            ${footerLinks}
+        `;
+
     } catch (error) {
         console.error("Erreur lors de la récupération des détails du plat :", error);
         document.getElementById("meal-name").textContent = "Erreur";
