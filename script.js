@@ -13,19 +13,25 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchMealsByArea();
     }
 
+    if (document.getElementById("random-btn")) {
+        setupEventListeners();
+    }
+
     // ✅ Exécuter MealsByIngredient() UNIQUEMENT si on est sur ingredient.html
     if (window.location.href.includes("ingredient.html")) {
         const params = new URLSearchParams(window.location.search);
         const ingredient = params.get("ingredient");
-
-        console.log("Ingrédient récupéré depuis l’URL :", ingredient);
-
+    
         if (ingredient) {
             MealsByIngredient(ingredient);
         } else {
-            document.getElementById("meals-container").innerHTML = "<p>Aucun ingrédient spécifié.</p>";
+            const mealsContainer = document.getElementById("meals-container");
+            if (mealsContainer) {
+                mealsContainer.innerHTML = "<p>Aucun ingrédient spécifié.</p>";
+            }
         }
     }
+    
 });
 
 
@@ -84,10 +90,10 @@ async function loadCategories() {
             let div = document.createElement("div");
             div.classList.add("category-card");
             div.innerHTML = `
+            <a href="categorie.html?category=${encodeURIComponent(category.strCategory)}" class="category-link">
                 <img src="${category.strCategoryThumb}" alt="${category.strCategory}">
-                <h3>${category.strCategory}</h3>
-                <p>${category.strCategoryDescription.substring(0, 100)}...</p>
-                <a href="categorie.html?category=${category.strCategory}" class="btn">Voir les plats</a>
+                <h3>${category.strCategory}</h3></a>
+                
             `;
             container.appendChild(div);
         });
@@ -129,7 +135,7 @@ async function loadCategoryMeals() {
             mealCard.innerHTML = `
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
-                <a href="meal.html?id=${meal.idMeal}" class="btn">Voir la recette</a>
+                <a href="meal.html?id=${meal.idMeal}" class="BoutonPage">Voir la recette</a>
             `;
             mealsContainer.appendChild(mealCard);
         });
@@ -341,22 +347,14 @@ async function LoadAreas() {
         data.meals.forEach(area => {
             const areaCard = document.createElement("div");
             areaCard.classList.add("area-card");
-            const areaTitle = document.createElement("h3");
-            areaTitle.textContent = area.strArea;
-        
-            // Création du bouton
-            const button = document.createElement("button");
-            button.classList.add("btn");
-            button.textContent = "Voir les plats";
-            
-            // ✅ Ajout de l'événement au lieu de `onclick`
-            button.addEventListener("click", () => {
-                fetchMealsByArea(area.strArea);
-            });
-            areaCard.appendChild(areaTitle);
-            areaCard.appendChild(button);
-        
-            // Ajout de la carte au conteneur
+
+            // ✅ Création d'un lien <a> qui redirige vers area.html
+            const areaLink = document.createElement("a");
+            areaLink.href = `area.html?area=${encodeURIComponent(area.strArea)}`;
+            areaLink.textContent = area.strArea;
+            areaLink.classList.add("area-link");
+
+            areaCard.appendChild(areaLink);
             areasContainer.appendChild(areaCard);
         });
 
@@ -368,20 +366,32 @@ async function LoadAreas() {
 
 
 
-// 🟢 Fonction pour filter les plats par zone géographique
 
-async function fetchMealsByArea(area) {
+
+// 🟢 Fonction pour filter les plats par zone géographique
+async function fetchMealsByArea() {
+    const params = new URLSearchParams(window.location.search);
+    const area = params.get("area");
+
+    if (!area) {
+        document.getElementById("meals-container").innerHTML = "<p>Aucune zone sélectionnée.</p>";
+        return;
+    }
+
     try {
-        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
+        const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`;
+        console.log("📡 URL API envoyée :", apiUrl); // ✅ Vérifier l’URL envoyée à l’API
+
+        const response = await fetch(apiUrl);
         const data = await response.json();
 
-        const mealsContainer = document.getElementById("meals-container");
-        if (!mealsContainer) return;
+        console.log("📦 Réponse API :", data); // ✅ Voir si l’API renvoie des plats
 
-        mealsContainer.innerHTML = "";
+        const mealsContainer = document.getElementById("meals-container");
+        mealsContainer.innerHTML = `<h2>Plats de la zone sélectionnée : ${area}</h2>`;
 
         if (!data.meals) {
-            mealsContainer.innerHTML = "<p>Aucun plat trouvé pour cette zone géographique.</p>";
+            mealsContainer.innerHTML += "<p>Aucun plat trouvé pour cette zone géographique.</p>";
             return;
         }
 
@@ -397,10 +407,14 @@ async function fetchMealsByArea(area) {
         });
 
     } catch (error) {
-        console.error("Erreur lors de la récupération des plats :", error);
+        console.error("❌ Erreur lors de la récupération des plats :", error);
         document.getElementById("meals-container").innerHTML = "<p>Une erreur s'est produite lors de la récupération des plats.</p>";
     }
 }
+
+
+
+
 
 // 🟢 Fonction pour afficher sous forme de vignettes, les plats appartenant à un ingrédient passé en paramètre dans l’URL. 
 

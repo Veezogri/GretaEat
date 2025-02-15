@@ -14,6 +14,12 @@ body {
     color: #333;
 }
 
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 
 /* Style de l'en-tête */
 #IndexHeader {
@@ -163,8 +169,10 @@ footer {
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    margin-top: 10px;
+	align-self: center;
+
     transition: background 0.3s ease-in-out, transform 0.2s;
+
 	
 
 }
@@ -175,6 +183,8 @@ footer {
 	background: #080200;
 	transform: scale(1.05);
 }
+
+
 
 
 #PrésentationAlphabet{
@@ -227,3 +237,88 @@ footer {
     color: #8B0304;
     margin-bottom: 10px;
 }
+
+
+/* Page categories */
+#categories-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+}
+#TitleCategories{
+	margin-top: 40px;
+	font-size: 2em;
+	margin-bottom: 20px;
+	color: #8B0304;
+
+}
+.category-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.category-card {
+	background:transparent; /* Bordeaux profond */
+    color: #F8F0E3;
+	padding: 20px;
+	width: 350px;
+	text-align: center;
+	border-radius: 10px;
+	
+	
+}
+.category-card img {
+	width: 100%;
+	border-radius: 100%;
+	object-fit: contain;
+	
+}
+
+
+.category-card:hover {
+	background:#9b3b3b;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #F8F0E3;
+    transform: scale(1.05);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transform: translateY(-5px);
+}
+
+/* Page categorie */
+/* Grille des plats */
+#meals-container{
+    display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
+
+}
+/* Carte de chaque plat */
+.meal-card {
+	background: transparent;
+	padding: 15px;
+	width: 250px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.meal-card:hover{
+	background:#9b3b3b;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #F8F0E3;
+    transform: scale(1.05);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transform: translateY(-5px);
+}
+
+.meal-card h3{
+	margin: 10px 0;
+}
+.meal-card img {
+	width: 100%;
+	border-radius: 10px;
+	object-fit: contain;
+}
+

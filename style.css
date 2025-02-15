@@ -57,82 +57,12 @@ footer {
 */
 
 
-/* page categories */ 
-
-#categories-container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 20px;
-	padding: 20px;
-}
-.category-card {
-	background: white;
-	padding: 15px;
-	width: 250px;
-	text-align: center;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.category-card img {
-	width: 100%;
-	border-radius: 10px;
-}
-.btn {
-	display: inline-block;
-	margin-top: 10px;
-	padding: 8px 12px;
-	background-color: #ff5733;
-	color: white;
-	text-decoration: none;
-	border-radius: 5px;
-}
-.btn:hover {
-	background-color: #e04e2a;
-}
 
 
-/* page categorie */ 
 
-/* Grille des plats */
-#meals-container{
-    display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 20px;
-	padding: 20px;
 
-}
-/* Carte de chaque plat */
-.meal-card {
-	background: white;
-	padding: 15px;
-	width: 250px;
-	text-align: center;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.meal-card img {
-	width: 100%;
-	border-radius: 10px;
-}
-.meal-card h3 {
-	margin: 10px 0;
-}
-/* Bouton standard */
-.btn {
-	display: inline-block;
-	margin-top: 10px;
-	padding: 8px 12px;
-	background-color: #ff5733;
-	color: white;
-	text-decoration: none;
-	border-radius: 5px;
-	transition: background-color 0.3s;
-}
-.btn:hover {
-	background-color: #e04e2a;
-}
+
+
 
 
 
