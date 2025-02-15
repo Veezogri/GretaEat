@@ -249,7 +249,7 @@ async function fetchMealsByFirstLetter(letter) {
             mealCard.innerHTML = `
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
-                <a href="meal.html?id=${meal.idMeal}" class="btn">Voir la recette</a>
+                <a href="meal.html?id=${meal.idMeal}" class="BoutonPage">Voir la recette</a>
             `;
             mealsContainer.appendChild(mealCard);
         });

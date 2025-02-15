@@ -88,10 +88,7 @@ body {
 	font-size: 1.2em;
 	transition: color 0.3s ease;
 }
-#IndexNav ul li a:hover {
-	background-color: #b37979;
-	border-radius: 5px;
-}
+
 /* Style du contenu principal */
 main {
 	padding: 40px 20px;
@@ -106,13 +103,13 @@ main {
 
 /* Style du pied de page */
 footer {
-	background-color: #333;
 	color: #fff;
 	text-align: center;
 	padding: 15px 0;
 	position: fixed;
 	width: 100%;
 	bottom: 0;
+	font-size: large;
 	box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -322,3 +319,28 @@ footer {
 	object-fit: contain;
 }
 
+
+/* Page first-letter */ 
+#alphabet-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 20px 0;
+}
+.alphabet-button {
+	margin: 5px;
+	padding: 10px 15px;
+	background-color:#9b3b3b;
+	color: white;
+	font-weight: 400;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+}
+.alphabet-button:hover {
+	color: #ffffff;
+	background: #080200;
+	transform: scale(1.05);
+	font-weight: 700;
+}
