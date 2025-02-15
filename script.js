@@ -377,6 +377,7 @@ async function MealsByIngredient(ingredient){
     try{
         const reponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
         const data = await reponse.json();
+        console.log(data);
         const mealsContainer = document.getElementById("meals-container");
         if (!mealsContainer) return;
 
