@@ -6,11 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
     loadMealDetails();
     setupAlphabetButtons();
     setupSearchFunctionality();
-    LoadAreas();
+    
 
     // ✅ Exécuter fetchMealsByArea() UNIQUEMENT si on est sur area.html
     if (window.location.href.includes("area.html")) {
         fetchMealsByArea();
+    }
+
+    if (window.location.href.includes("areas.html")) {
+        LoadAreas();
     }
 
     if (document.getElementById("random-btn")) {
@@ -385,10 +389,11 @@ async function fetchMealsByArea() {
         const response = await fetch(apiUrl);
         const data = await response.json();
 
-        console.log("📦 Réponse API :", data); // ✅ Voir si l’API renvoie des plats
+        const mealsContainer = document.getElementById("meals-container2");
 
-        const mealsContainer = document.getElementById("meals-container");
-        mealsContainer.innerHTML = `<h2>Plats de la zone sélectionnée : ${area}</h2>`;
+
+        const titleheader = document.getElementById("titleheader");
+        titleheader.innerHTML = `<h2>Plats de la zone sélectionnée : ${area}</h2>`;
 
         if (!data.meals) {
             mealsContainer.innerHTML += "<p>Aucun plat trouvé pour cette zone géographique.</p>";
@@ -397,11 +402,11 @@ async function fetchMealsByArea() {
 
         data.meals.forEach(meal => {
             const mealCard = document.createElement("div");
-            mealCard.classList.add("meal-card");
+            mealCard.classList.add("meal-card2");
             mealCard.innerHTML = `
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
-                <a href="meal.html?id=${meal.idMeal}" class="btn">Voir la recette</a>
+                <a href="meal.html?id=${meal.idMeal}" class="BoutonPage">Voir la recette</a>
             `;
             mealsContainer.appendChild(mealCard);
         });
