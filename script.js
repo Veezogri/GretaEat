@@ -268,7 +268,7 @@ async function fetchMealsByFirstLetter(letter) {
 function setupSearchFunctionality() {
     const searchInput = document.getElementById("search-input");
     const searchBtn = document.getElementById("search-btn");
-    const mealsContainer = document.getElementById("meals-container");
+    const mealsContainer = document.getElementById("meals-containerSearch");
 
     if (!searchInput || !searchBtn || !mealsContainer) return; // Vérifier si les éléments existent
 
@@ -296,7 +296,7 @@ async function fetchMealsByName(name) {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
         const data = await response.json();
 
-        const mealsContainer = document.getElementById("meals-container");
+        const mealsContainer = document.getElementById("meals-containerSearch");
         if (!mealsContainer) return; // Vérifier si l'élément existe
 
         mealsContainer.innerHTML = ""; // Nettoyage du conteneur avant affichage
@@ -309,11 +309,11 @@ async function fetchMealsByName(name) {
         // Génération des cartes de plats
         data.meals.forEach(meal => {
             const mealCard = document.createElement("div");
-            mealCard.classList.add("meal-card");
+            mealCard.classList.add("meal-cardSearch");
             mealCard.innerHTML = `
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
-                <a href="meal.html?id=${meal.idMeal}" class="btn">Voir la recette</a>
+                <a href="meal.html?id=${meal.idMeal}" class="BoutonPage">Voir la recette</a>
             `;
             mealsContainer.appendChild(mealCard);
         });
@@ -393,7 +393,7 @@ async function fetchMealsByArea() {
 
 
         const titleheader = document.getElementById("titleheader");
-        titleheader.innerHTML = `<h2>Plats de la zone sélectionnée : ${area}</h2>`;
+        titleheader.innerHTML = `Plats de la zone sélectionnée : ${area}`;
 
         if (!data.meals) {
             mealsContainer.innerHTML += "<p>Aucun plat trouvé pour cette zone géographique.</p>";

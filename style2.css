@@ -398,12 +398,7 @@ footer {
 	
 }
 
-#meals-container2 h2 {
-	font-size: 2em;
-	margin-bottom: 20px;
-	color: #8B0304;
-	text-align: center;
-}
+
 
 .meal-card2 {
 	background: transparent;
@@ -435,3 +430,64 @@ footer {
 	object-fit: contain;
 }
 
+#titleheader{
+	font-size: 2em;
+	margin-bottom: 20px;
+	color: #8B0304;
+}
+
+/* Page search */
+
+/* Conteneur de recherche */
+#search-container {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+#search-input {
+	width: 300px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px 0 0 5px;
+	font-size: 16px;
+}
+#search-btn {
+	padding: 10px 20px;
+	background-color: #ff5733;
+	color: white;
+	border: none;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s;
+}
+#search-btn:hover {
+	background-color: #e04e2a;
+}
+/* Grille des plats */
+.meals-grid {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Carte de chaque plat */
+.meal-cardSearch {
+	background: transparent;
+	padding: 15px;
+	width: 250px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+
+.meal-cardSearchimg {
+	width: 100%;
+	object-fit: contain;
+	border-radius: 10px;
+}
+.meal-cardSearch h3 {
+	margin: 10px 0;
+}
