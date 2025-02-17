@@ -200,7 +200,7 @@ async function loadMealDetails() {
         }
 
         const meal = data.meals[0];
-        document.getElementById("meal-name").textContent = meal.strMeal;
+        document.getElementById("meal-name").textContent = `Recette : ${meal.strMeal}`; ;
 
         let ingredientsList = "";
         let footerLinks = "";
@@ -223,7 +223,7 @@ async function loadMealDetails() {
 
         // ✅ Création d'une div pour styliser le plat
         const mealcard = document.createElement("div");
-        mealcard.classList.add("meal-card");
+        mealcard.classList.add("meal-cardmeal");
         mealcard.innerHTML = `
             <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
             <h3>Catégorie : <a href="categorie.html?category=${encodeURIComponent(meal.strCategory)}">${meal.strCategory}</a></h3>
