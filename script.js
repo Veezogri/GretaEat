@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     setupEventListeners();
-    loadRandomMeal();
     loadCategories();
     loadCategoryMeals();
     loadMealDetails();
@@ -39,39 +38,67 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+
+
 // 🟢 Fonction pour charger un plat aléatoire
 async function loadRandomMeal() {
     try {
         const response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
         const data = await response.json();
-
+        
         if (!data.meals) {
             throw new Error("Aucun plat trouvé.");
         }
 
         const meal = data.meals[0];
-        const container = document.getElementById("meal-container");
-        
-        let ingredients = "";
-        for (let i = 1; i <= 20; i++) {
-            if (meal[`strIngredient${i}`]) {
-                ingredients += `<li>${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}</li>`;
-            }
+
+        // Récupérer les conteneurs
+        const randomContainer = document.getElementById("container-random");
+        const searchContainer = document.getElementById("meals-containerSearch");
+
+        if (!randomContainer || !searchContainer) {
+            throw new Error("Conteneurs introuvables.");
         }
 
-        container.innerHTML = `
-            <h2>${meal.strMeal}</h2>
-            <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-            <p><strong>Catégorie :</strong> ${meal.strCategory}</p>
-            <p><strong>Origine :</strong> ${meal.strArea}</p>
-            <h3>Ingrédients :</h3>
-            <ul>${ingredients}</ul>
-            <h3>Instructions :</h3>
-            <p>${meal.strInstructions}</p>
+        // ✅ Si une recherche a été effectuée, on la supprime avant d'afficher un plat aléatoire
+        searchContainer.innerHTML = "";
+
+        // ✅ Effacer le contenu précédent du randomContainer
+        randomContainer.innerHTML = "";
+
+        // Création d'une nouvelle div pour le plat aléatoire
+        const cardrandom = document.createElement("div");
+        cardrandom.classList.add("random-card");
+
+        cardrandom.innerHTML = `
+                <h2>${meal.strMeal}</h2>
+                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+                <p><strong>Catégorie :</strong> ${meal.strCategory}</p>
+                <p><strong>Origine :</strong> ${meal.strArea}</p>
+                <a href="meal.html?id=${meal.idMeal}">Voir la recette</a>
+            
         `;
+
+        // ✅ Ajouter la nouvelle carte au conteneur randomContainer
+        randomContainer.appendChild(cardrandom);
+
     } catch (error) {
         console.error("Erreur lors de la récupération du plat aléatoire :", error);
-        document.getElementById("meal-container").innerHTML = "<p>Une erreur est survenue. Veuillez réessayer.</p>";
+
+        const randomContainer = document.getElementById("container-random");
+        if (randomContainer) {
+            randomContainer.innerHTML = "<p>Une erreur est survenue. Veuillez réessayer.</p>";
+        }
+    }
+}
+
+
+// 🟢 Fonction pour gérer les événements (ex: bouton random meal)
+function setupEventListeners() {
+    const randomBtn = document.getElementById("random-btn");
+    if (randomBtn) {
+        randomBtn.addEventListener("click", loadRandomMeal);
     }
 }
 
@@ -182,15 +209,22 @@ async function loadMealDetails() {
             const ingredient = meal[`strIngredient${i}`];
             const measure = meal[`strMeasure${i}`];
             if (ingredient) {
-                // ✅ Création de la liste des ingrédients
                 ingredientsList += `<li>${ingredient} - ${measure}</li>`;
-                // ✅ Création du lien dans le footer
                 footerLinks += `<a href="ingredient.html?ingredient=${encodeURIComponent(ingredient)}" class="btn">${ingredient}</a> `;
             }
         }
 
-        // ✅ Affichage du plat
-        document.getElementById("meal-details").innerHTML = `
+        // ✅ Vérifier que le conteneur existe
+        const mealContainer = document.getElementById("meal-details");
+        if (!mealContainer) {
+            console.error("❌ Conteneur 'meal-details' introuvable !");
+            return;
+        }
+
+        // ✅ Création d'une div pour styliser le plat
+        const mealcard = document.createElement("div");
+        mealcard.classList.add("meal-card");
+        mealcard.innerHTML = `
             <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
             <h3>Catégorie : <a href="categorie.html?category=${encodeURIComponent(meal.strCategory)}">${meal.strCategory}</a></h3>
             <h3>Origine : <a href="area.html?area=${encodeURIComponent(meal.strArea)}">${meal.strArea}</a></h3>
@@ -199,6 +233,10 @@ async function loadMealDetails() {
             <h3>Instructions :</h3>
             <p>${meal.strInstructions}</p>
         `;
+
+        // ✅ Nettoyage et ajout du plat
+        mealContainer.innerHTML = "";
+        mealContainer.appendChild(mealcard);
 
         // ✅ Ajout des liens des ingrédients dans le footer
         document.getElementById("meal-footer").innerHTML = `
@@ -212,6 +250,7 @@ async function loadMealDetails() {
         document.getElementById("meal-details").innerHTML = "<p>Une erreur s'est produite lors de la récupération des détails du plat.</p>";
     }
 }
+
 
 
 
@@ -291,25 +330,32 @@ function setupSearchFunctionality() {
 }
 
 // 🟢 Fonction asynchrone pour récupérer les plats par nom
+
 async function fetchMealsByName(name) {
     try {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
         const data = await response.json();
 
         const mealsContainer = document.getElementById("meals-containerSearch");
-        if (!mealsContainer) return; // Vérifier si l'élément existe
+        const randomContainer = document.getElementById("container-random");
 
-        mealsContainer.innerHTML = ""; // Nettoyage du conteneur avant affichage
+        if (!mealsContainer || !randomContainer) return;
+
+        // ✅ Si un plat aléatoire a été généré, on l'efface avant d'afficher les résultats de recherche
+        randomContainer.innerHTML = "";
+
+        // Nettoyage du conteneur avant affichage des résultats de recherche
+        mealsContainer.innerHTML = "";
 
         if (!data.meals) {
             mealsContainer.innerHTML = "<p>Aucun plat trouvé pour cette recherche.</p>";
             return;
         }
 
-        // Génération des cartes de plats
+        // ✅ Génération des cartes de plats
         data.meals.forEach(meal => {
             const mealCard = document.createElement("div");
-            mealCard.classList.add("meal-cardSearch");
+            mealCard.classList.add("meal-card");
             mealCard.innerHTML = `
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
@@ -320,16 +366,10 @@ async function fetchMealsByName(name) {
 
     } catch (error) {
         console.error("Erreur lors de la récupération des plats :", error);
-        document.getElementById("meals-container").innerHTML = "<p>Une erreur s'est produite lors de la récupération des plats.</p>";
+        document.getElementById("meals-containerSearch").innerHTML = "<p>Une erreur s'est produite lors de la récupération des plats.</p>";
     }
 }
-// 🟢 Fonction pour gérer les événements (ex: bouton random meal)
-function setupEventListeners() {
-    const randomBtn = document.getElementById("random-btn");
-    if (randomBtn) {
-        randomBtn.addEventListener("click", loadRandomMeal);
-    }
-}
+
 
 
 // 🟢 Fonction pour lister les zones géographiques 

@@ -157,7 +157,8 @@ footer {
 
 
 .BoutonPage{
-    display: inline-block;
+	display: flex;
+	justify-content: center;
     padding: 12px 20px;
     font-size: 18px;
     color: white;
@@ -167,10 +168,7 @@ footer {
     text-decoration: none;
     font-weight: bold;
 	align-self: center;
-
     transition: background 0.3s ease-in-out, transform 0.2s;
-
-	
 
 }
 
@@ -452,26 +450,59 @@ footer {
 	font-size: 16px;
 }
 #search-btn {
-	padding: 10px 20px;
-	background-color: #ff5733;
-	color: white;
-	border: none;
-	border-radius: 0 5px 5px 0;
-	cursor: pointer;
-	font-size: 16px;
-	transition: background-color 0.3s;
+	padding: 12px 20px;
+    font-size: 18px;
+    color: white;
+    background: #8B0304	;
+    border: none;
+    border-radius: 0 5px 0 5px;
+    text-decoration: none;
+    font-weight: bold;
+	align-self: center;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+	margin-right: 10px;
 }
 #search-btn:hover {
-	background-color: #e04e2a;
+	color: #ffffff;
+	background: #080200;
+	transform: scale(1.05);
+	cursor: pointer;
+}
+
+
+#random-btn{
+	padding: 12px 20px;
+    font-size: 18px;
+    color: white;
+    background: #8B0304	;
+    border: none;
+    border-radius: 0 5px 0 5px;
+    text-decoration: none;
+    font-weight: bold;
+	align-self: center;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+
+}
+
+
+#random-btn:hover{
+	color: #ffffff;
+	background: #080200;
+	transform: scale(1.05);
+	cursor: pointer;
+	margin-left: 10px;
+
 }
 /* Grille des plats */
-.meals-grid {
+#meals-containerSearch {
 	display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     padding: 20px;
 }
+
+
 
 /* Carte de chaque plat */
 .meal-cardSearch {
@@ -482,12 +513,100 @@ footer {
 	border-radius: 10px;
 }
 
+.meal-cardSearch:hover{
+	background:#9b3b3b;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	color: #F8F0E3;
+	transform: scale(1.05);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transform: translateY(-5px);
+}
 
-.meal-cardSearchimg {
+
+.meal-cardSearch img {
 	width: 100%;
 	object-fit: contain;
 	border-radius: 10px;
 }
 .meal-cardSearch h3 {
 	margin: 10px 0;
+}
+
+
+/* carte de chaque random plat */ 
+
+
+
+#container-random{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+
+.random-card{
+	background: transparent;
+	padding: 15px;
+	width: 250px;
+	text-align: center;
+	border-radius: 10px;
+	text-decoration: none;
+	gap: 20px;
+
+}
+
+.random-card:hover{
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	transform: scale(1.05);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transform: translateY(-5px);
+}
+
+.random-card img{
+	width: 100%;
+	object-fit: contain;
+	border-radius: 10px;
+}
+
+.random-card a{
+	margin-top: 15px;
+	display: flex;
+	justify-content: center;
+    padding: 12px 20px;
+    font-size: 18px;
+    color: white;
+    background: #8B0304	;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 400;
+	align-self: center;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+
+.random-card a:hover{
+	color: #ffffff;
+	background: #080200;
+	transform: scale(1.05);
+	font-weight: bolder;
+
+}
+
+/* Page meal */ 
+#meal-details{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+	width: 80%;
+	margin: 0 auto;
+	
+	
+
 }
