@@ -728,3 +728,45 @@ footer {
 	background: #080200;
 	transform: scale(1.05);
 }
+
+
+/* Page ingrédient */ 
+
+#meals-container-ingredient{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
+
+}
+
+
+.meal-card-ingredient{
+	background: transparent;
+	padding: 15px;
+	width: 250px;
+	text-align: center;
+	border-radius: 10px;
+
+}
+
+
+.meal-card-ingredient{
+	background:#9b3b3b;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	color: #F8F0E3;
+	transform: scale(1.05);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transform: translateY(-5px);
+}
+
+
+.meal-card-ingredient h3{
+	margin: 10px 0;
+}
+.meal-card-ingredient img {
+	width: 100%;
+	border-radius: 10px;
+	object-fit: contain;
+}

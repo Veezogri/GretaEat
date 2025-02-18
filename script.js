@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupSearchFunctionality();
     
 
-    // ✅ Exécuter fetchMealsByArea() UNIQUEMENT si on est sur area.html
+    //  Exécuter fetchMealsByArea() UNIQUEMENT si on est sur area.html
     if (window.location.href.includes("area.html")) {
         fetchMealsByArea();
     }
@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.getElementById("random-btn")) {
         setupEventListeners();
     }
+    // Exécuter MealsByIngredient() UNIQUEMENT si on est sur ingredient.html
 
-    // ✅ Exécuter MealsByIngredient() UNIQUEMENT si on est sur ingredient.html
     if (window.location.href.includes("ingredient.html")) {
         const params = new URLSearchParams(window.location.search);
         const ingredient = params.get("ingredient");
@@ -41,7 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// 🟢 Fonction pour charger un plat aléatoire
+
+
+//  Fonction pour charger un plat aléatoire
 async function loadRandomMeal() {
     try {
         const response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
@@ -61,10 +63,10 @@ async function loadRandomMeal() {
             throw new Error("Conteneurs introuvables.");
         }
 
-        // ✅ Si une recherche a été effectuée, on la supprime avant d'afficher un plat aléatoire
+        //  Si une recherche a été effectuée, on la supprime avant d'afficher un plat aléatoire
         searchContainer.innerHTML = "";
 
-        // ✅ Effacer le contenu précédent du randomContainer
+        //  Effacer le contenu précédent du randomContainer
         randomContainer.innerHTML = "";
 
         // Création d'une nouvelle div pour le plat aléatoire
@@ -80,7 +82,7 @@ async function loadRandomMeal() {
             
         `;
 
-        // ✅ Ajouter la nouvelle carte au conteneur randomContainer
+        // Ajoute la nouvelle carte au conteneur randomContainer
         randomContainer.appendChild(cardrandom);
 
     } catch (error) {
@@ -94,7 +96,7 @@ async function loadRandomMeal() {
 }
 
 
-// 🟢 Fonction pour gérer les événements (ex: bouton random meal)
+// Fonction pour gérer les événements (ex: bouton random meal)
 function setupEventListeners() {
     const randomBtn = document.getElementById("random-btn");
     if (randomBtn) {
@@ -102,7 +104,7 @@ function setupEventListeners() {
     }
 }
 
-// 🟢 Fonction pour charger les catégories
+//  Fonction pour charger les catégories
 async function loadCategories() {
     try {
         const response = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
@@ -134,7 +136,7 @@ async function loadCategories() {
     }
 }
 
-// 🟢 Fonction pour charger les plats d'une catégorie spécifique
+// Fonction pour charger les plats d'une catégorie spécifique
 async function loadCategoryMeals() {
     const mealsContainer = document.getElementById("meals-container");
     
@@ -178,7 +180,7 @@ async function loadCategoryMeals() {
 }
 
 
-// 🟢 Fonction pour charger les détails d'un plat spécifique
+// Fonction pour charger les détails d'un plat spécifique
 async function loadMealDetails() {
     const params = new URLSearchParams(window.location.search);
     const mealId = params.get("id");
@@ -214,14 +216,14 @@ async function loadMealDetails() {
             }
         }
 
-        // ✅ Vérifier que le conteneur existe
+        //  Vérifier que le conteneur existe
         const mealContainer = document.getElementById("meal-details");
         if (!mealContainer) {
             console.error("❌ Conteneur 'meal-details' introuvable !");
             return;
         }
 
-        // ✅ Création d'une div pour styliser le plat
+        //  Création d'une div pour styliser le plat
         const mealcard = document.createElement("div");
         mealcard.classList.add("meal-cardmeal");
         mealcard.innerHTML = `
@@ -234,11 +236,11 @@ async function loadMealDetails() {
             <p>${meal.strInstructions}</p>
         `;
 
-        // ✅ Nettoyage et ajout du plat
+        // Nettoyage et ajout du plat
         mealContainer.innerHTML = "";
         mealContainer.appendChild(mealcard);
 
-        // ✅ Ajout des liens des ingrédients dans le footer
+        // Ajout des liens des ingrédients dans le footer
         document.getElementById("meal-footer").innerHTML = `
             <h3>Voir d'autres recettes avec ces ingrédients :</h3>
             ${footerLinks}
@@ -254,7 +256,7 @@ async function loadMealDetails() {
 
 
 
-// 🟢 Fonction pour initialiser les boutons de l'alphabet
+// Fonction pour initialiser les boutons de l'alphabet
 function setupAlphabetButtons() {
     const alphabetContainer = document.getElementById("alphabet-container");
     if (!alphabetContainer) return; // Vérifier si l'élément existe
@@ -269,7 +271,7 @@ function setupAlphabetButtons() {
     });
 }
 
-// 🟢 Fonction asynchrone pour récupérer les plats par première lettre
+//  Fonction asynchrone pour récupérer les plats par première lettre
 async function fetchMealsByFirstLetter(letter) {
     try {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`);
@@ -328,8 +330,7 @@ function setupSearchFunctionality() {
         }
     });
 }
-
-// 🟢 Fonction asynchrone pour récupérer les plats par nom
+//  Fonction asynchrone pour récupérer les plats par nom
 
 async function fetchMealsByName(name) {
     try {
@@ -341,7 +342,7 @@ async function fetchMealsByName(name) {
 
         if (!mealsContainer || !randomContainer) return;
 
-        // ✅ Si un plat aléatoire a été généré, on l'efface avant d'afficher les résultats de recherche
+        //  Si un plat aléatoire a été généré, on l'efface avant d'afficher les résultats de recherche
         randomContainer.innerHTML = "";
 
         // Nettoyage du conteneur avant affichage des résultats de recherche
@@ -352,7 +353,7 @@ async function fetchMealsByName(name) {
             return;
         }
 
-        // ✅ Génération des cartes de plats
+        //  Génération des cartes de plats
         data.meals.forEach(meal => {
             const mealCard = document.createElement("div");
             mealCard.classList.add("meal-card");
@@ -372,7 +373,7 @@ async function fetchMealsByName(name) {
 
 
 
-// 🟢 Fonction pour lister les zones géographiques 
+//  Fonction pour lister les zones géographiques 
 async function LoadAreas() {
     try {
         const response = await fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list");
@@ -392,7 +393,7 @@ async function LoadAreas() {
             const areaCard = document.createElement("div");
             areaCard.classList.add("area-card");
 
-            // ✅ Création d'un lien <a> qui redirige vers area.html
+            //  Création d'un lien <a> qui redirige vers area.html
             const areaLink = document.createElement("a");
             areaLink.href = `area.html?area=${encodeURIComponent(area.strArea)}`;
             areaLink.textContent = area.strArea;
@@ -412,7 +413,7 @@ async function LoadAreas() {
 
 
 
-// 🟢 Fonction pour filter les plats par zone géographique
+//  Fonction pour filter les plats par zone géographique
 async function fetchMealsByArea() {
     const params = new URLSearchParams(window.location.search);
     const area = params.get("area");
@@ -424,7 +425,7 @@ async function fetchMealsByArea() {
 
     try {
         const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`;
-        console.log("📡 URL API envoyée :", apiUrl); // ✅ Vérifier l’URL envoyée à l’API
+        console.log("📡 URL API envoyée :", apiUrl); //  Vérifier l’URL envoyée à l’API
 
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -461,7 +462,7 @@ async function fetchMealsByArea() {
 
 
 
-// 🟢 Fonction pour afficher sous forme de vignettes, les plats appartenant à un ingrédient passé en paramètre dans l’URL. 
+// Fonction pour afficher sous forme de vignettes, les plats appartenant à un ingrédient passé en paramètre dans l’URL. 
 
 
 async function MealsByIngredient(ingredient){
@@ -474,7 +475,7 @@ async function MealsByIngredient(ingredient){
         console.log("URL API :", `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`); // ✅ Vérifier l'URL de la requête
         console.log("Données API :", data); // ✅ Vérifier la réponse API
 
-        const mealsContainer = document.getElementById("meals-container");
+        const mealsContainer = document.getElementById("meals-container-ingredient");
         if (!mealsContainer) return;
 
         mealsContainer.innerHTML = "";
@@ -486,7 +487,7 @@ async function MealsByIngredient(ingredient){
 
         data.meals.forEach(meal => {
             const mealCard = document.createElement("div");
-            mealCard.classList.add("meal-card");
+            mealCard.classList.add("meal-card-ingredient");
             mealCard.innerHTML = `
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
