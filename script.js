@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+//document.addEventListener("DOMContentLoaded", () => {
     setupEventListeners();
     loadCategories();
     loadCategoryMeals();
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
-});
+//});
 
 
 

@@ -272,7 +272,7 @@ footer {
 
 
 .category-card:hover {
-	background:#9b3b3b;
+	background:transparent;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #F8F0E3;
     transform: scale(1.05);
@@ -316,6 +316,8 @@ footer {
 	border-radius: 10px;
 	object-fit: contain;
 }
+
+
 
 
 /* Page first-letter */ 
