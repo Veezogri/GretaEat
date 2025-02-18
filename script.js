@@ -43,7 +43,7 @@
 
 
 //  Fonction pour charger un plat aléatoire
-async function loadRandomMeal() {
+export async function loadRandomMeal() {
     try {
         const response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
         const data = await response.json();
@@ -104,7 +104,7 @@ function setupEventListeners() {
 }
 
 //  Fonction pour charger les catégories
-async function loadCategories() {
+export async function loadCategories() {
     try {
         const response = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
         const data = await response.json();
@@ -180,7 +180,7 @@ async function loadCategoryMeals() {
 
 
 // Fonction pour charger les détails d'un plat spécifique
-async function loadMealDetails() {
+export async function loadMealDetails() {
     const params = new URLSearchParams(window.location.search);
     const mealId = params.get("id");
 
@@ -340,7 +340,7 @@ function setupSearchFunctionality() {
 }
 //  Fonction asynchrone pour récupérer les plats par nom
 
-async function fetchMealsByName(name) {
+export async function fetchMealsByName(name) {
     try {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
         const data = await response.json();
