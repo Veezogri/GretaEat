@@ -128,6 +128,20 @@ footer {
 
 }
 
+#ZoneGeopgraphique{
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 60px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+	
+
+}
 .ImgContainer{
     overflow: hidden;
     border-radius: 15px;
@@ -157,13 +171,12 @@ footer {
 
 
 .BoutonPage{
-	display: flex;
-	justify-content: center;
     padding: 12px 20px;
     font-size: 18px;
     color: white;
     background: #8B0304	;
     border: none;
+	max-width: fit-content;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
@@ -776,3 +789,10 @@ footer {
 	border-radius: 10px;
 	object-fit: contain;
 }
+
+
+/* Commencement du responsie design de la page categories */
+
+
+
+
