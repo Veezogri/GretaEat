@@ -39,8 +39,9 @@ body {
 }
 
 #LogoAndTitle img{
-	width: 100px;
+	width:200px;
 	margin-bottom: 20px;
+	object-fit: contain;
 	
 }
 
@@ -59,35 +60,47 @@ body {
 
 /* Style de la navigation */
 
-#IndexNav ul {
+#IndexNav ul{
 	list-style: none;
 	display: flex;
 	justify-content: center;
 	gap: 20px;
 	margin-bottom: 20px;
 }
-#IndexNav ul li {
-	margin: 0 15px;
-	background-color: #fff;
-	border: 1px solid #ddd;
-	border-radius: 10px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	width: 250px;
+#IndexNav ul li a {
+    display: flex;
+	justify-content: center;
+    gap: 8px;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+	align-items: center;
 }
 
+#IndexNav ul li a i {
+    font-size: 1.2em;
+    color: #8B0304;
+	;
+}
+
+/* ✅ HOVER EFFECT */
 #IndexNav ul li:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: #8B0304;
+    transform: scale(1.05);
 }
-#IndexNav ul li a {
-	display: block;
-	padding: 20px;
-	color: #333;
-	text-decoration: none;
-	font-size: 1.2em;
-	transition: color 0.3s ease;
+
+#IndexNav ul li:hover a {
+    color: white;
+	align-items: center;
 }
+
+#IndexNav ul li:hover a i {
+    color: white;
+}
+
 
 /* Style du contenu principal */
 main {
@@ -125,6 +138,7 @@ footer {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+	
 
 }
 
@@ -139,6 +153,7 @@ footer {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+	
 	
 
 }
@@ -159,31 +174,26 @@ footer {
     transform: scale(1.05);
 }
 
-#ZoneDeTexte1{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-
-}
 
 
 
 
-.BoutonPage{
+
+.BoutonPage {
+    display: inline-block;
     padding: 12px 20px;
     font-size: 18px;
     color: white;
-    background: #8B0304	;
+    background: #8B0304;
     border: none;
-	max-width: fit-content;
+    width: 250px; /* ✅ Fixe une largeur standard */
+    text-align: center; /* ✅ Centre le texte */
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-	align-self: center;
     transition: background 0.3s ease-in-out, transform 0.2s;
-
 }
+
 
 
 .BoutonPage:hover {
@@ -246,6 +256,23 @@ footer {
     margin-bottom: 10px;
 }
 
+#ZoneDeTexte3 {
+    display: flex;
+	gap: 20px;
+	flex-direction: column;
+	align-items: center;
+	margin: 20px;
+	width: 50%;
+	text-align: left;
+}
+
+#ZoneDeTexte3  h2 {
+    font-size: 1.8em;
+    color: #8B0304;
+    margin-bottom: 10px;
+}
+
+
 
 /* Page categories */
 #categories-container {
@@ -267,7 +294,7 @@ footer {
     display: block;
 }
 .category-card {
-	background:transparent; /* Bordeaux profond */
+	background:transparent;
     color: #F8F0E3;
 	padding: 20px;
 	width: 350px;
@@ -283,14 +310,20 @@ footer {
 	
 }
 
+.category-card img:hover {
+	transform: scale(1.1);
+	transition: transform 0.5s ease-in-out;
+
+}
+
 
 .category-card:hover {
 	background:transparent;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #F8F0E3;
-    transform: scale(1.05);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	transform: translateY(-5px);
+	transform: scale(1.5); 
+    box-shadow: 0 6px 12px rgba(145, 62, 62, 0.3);
+    transform: translateY(-8px); 
 }
 
 /* Page categorie */
@@ -301,6 +334,11 @@ footer {
 	justify-content: center;
 	gap: 20px;
 	padding: 20px;
+	background: #F8F0E3;
+	border-radius: 10px;
+	width: 90%;
+	margin: 0 auto;
+	margin-bottom: 20px;
 
 }
 /* Carte de chaque plat */
@@ -310,16 +348,29 @@ footer {
 	width: 250px;
 	text-align: center;
 	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	
+
 }
 
 .meal-card:hover{
-	background:#9b3b3b;
+	background:transparent;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #F8F0E3;
-    transform: scale(1.05);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	transform: translateY(-5px);
+    color: black;
+	transform: scale(1.5); 
+    box-shadow: 0 6px 12px rgba(145, 62, 62, 0.3);
+    transform: translateY(-8px);
 }
+
+.meal-card img:hover {
+	transform: scale(1.05);
+	transition: transform 0.5s ease-in-out;
+
+}
+
+
 
 .meal-card h3{
 	margin: 10px 0;
@@ -330,15 +381,69 @@ footer {
 	object-fit: contain;
 }
 
+#BoutonCategorie{
+	display: flex;
+	margin-top: 20px;
+	width: 100%;
+	margin: 0 auto;
+	justify-content: center;
+	background-color:#9b3b3b;
+	color: white;
+	font-weight: 400;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	padding: 10px 15px;
+	text-decoration: none;
+	
+}
+
+#BoutonCategorie:hover {
+	color: #ffffff;
+	background: #080200;
+	transform: scale(1.05);
+	font-weight: 700;
+}
 
 
 
-/* Page first-letter */ 
+/* Page first-letter */
+
+#meals-container-alphabet {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
+}
+
+
 #alphabet-container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	margin: 20px 0;
+}
+
+.meal-cardalphabet{
+	background:transparent;
+	padding: 15px;
+	width: 250px;
+	text-align: center;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.meal-cardalphabet:hover{
+	background:transparent;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	color: black;
+	transform: scale(1.5); 
+	box-shadow: 0 6px 12px rgba(145, 62, 62, 0.3);
+	transform: translateY(-8px);
 }
 
 
@@ -370,6 +475,11 @@ footer {
     justify-content: center;
     gap: 20px;
     padding: 20px;
+	width: 90%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	background: #F8F0E3;
+	border-radius: 10px;
 }
 
 .area-card {
@@ -412,17 +522,39 @@ footer {
     justify-content: center;
     gap: 20px;
     padding: 20px;
+	width: 90%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	background: #F8F0E3;
+	border-radius: 10px;
 	
 }
 
 
 
 .meal-card2 {
-	background: transparent;
+	background:transparent;
 	padding: 15px;
 	width: 250px;
 	text-align: center;
 	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.AreaBouton{
+	margin: 5px;
+	padding: 10px 15px;
+	background-color:#9b3b3b;
+	color: white;
+	font-weight: 400;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	text-decoration: none;
+
 }
 
 .meal-card2 h3{
@@ -432,12 +564,12 @@ footer {
 }
 
 .meal-card2:hover{
-	background:#9b3b3b;
+	background:transparent;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	color: #F8F0E3;
-	transform: scale(1.05);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	transform: translateY(-5px);
+	color: black;
+	transform: scale(1.5); 
+	box-shadow: 0 6px 12px rgba(145, 62, 62, 0.3);
+	transform: translateY(-8px);
 }
 
 
@@ -445,6 +577,19 @@ footer {
 	width: 100%;
 	border-radius: 10px;
 	object-fit: contain;
+}
+
+.meal-card2 img:hover {
+	transform: scale(1.05);
+	transition: transform 0.5s ease-in-out;
+
+}
+
+.AreaBouton:hover {
+	color: #ffffff;
+	background: #080200;
+	transform: scale(1.05);
+	font-weight: 700;
 }
 
 #titleheader{
@@ -460,6 +605,8 @@ footer {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 20px;
+	flex-direction: row;
+	align-items: center;
 }
 #search-input {
 	width: 300px;
@@ -469,17 +616,16 @@ footer {
 	font-size: 16px;
 }
 #search-btn {
-	padding: 12px 20px;
-    font-size: 18px;
-    color: white;
-    background: #8B0304	;
-    border: none;
-    border-radius: 0 5px 0 5px;
-    text-decoration: none;
-    font-weight: bold;
-	align-self: center;
-    transition: background 0.3s ease-in-out, transform 0.2s;
-	margin-right: 10px;
+	margin: 5px;
+	padding: 12px 15px;
+	background-color:#9b3b3b;
+	color: white;
+	font-weight: 400;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	text-decoration: none;
 }
 #search-btn:hover {
 	color: #ffffff;
@@ -490,16 +636,16 @@ footer {
 
 
 #random-btn{
-	padding: 12px 20px;
-    font-size: 18px;
-    color: white;
-    background: #8B0304	;
-    border: none;
-    border-radius: 0 5px 0 5px;
-    text-decoration: none;
-    font-weight: bold;
-	align-self: center;
-    transition: background 0.3s ease-in-out, transform 0.2s;
+	margin: 5px;
+	padding: 12px 15px;
+	background-color:#9b3b3b;
+	color: white;
+	font-weight: 400;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	text-decoration: none;
 
 }
 
@@ -519,27 +665,35 @@ footer {
     justify-content: center;
     gap: 20px;
     padding: 20px;
-}
-
-
-
-/* Carte de chaque plat */
-.meal-cardSearch {
-	background: transparent;
-	padding: 15px;
-	width: 250px;
-	text-align: center;
+	width: 90%;
+	margin: 0 auto;
+	margin-bottom: 20px;
 	border-radius: 10px;
 }
 
-.meal-cardSearch:hover{
-	background:#9b3b3b;
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	color: #F8F0E3;
-	transform: scale(1.05);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	transform: translateY(-5px);
+
+.Bouton-Search-Value{
+	margin: 5px;
+	padding: 10px 15px;
+	background-color:#9b3b3b;
+	color: white;
+	font-weight: 400;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	text-decoration: none;
 }
+
+.Bouton-Search-Value:hover {
+	color: #ffffff;
+	background: #080200;
+	transform: scale(1.05);
+	font-weight: 700;
+}
+
+
+
 
 
 .meal-cardSearch img {
@@ -568,7 +722,7 @@ footer {
 
 
 .random-card{
-	background: transparent;
+	background: white;
 	padding: 15px;
 	width: 250px;
 	text-align: center;
@@ -595,16 +749,15 @@ footer {
 	margin-top: 15px;
 	display: flex;
 	justify-content: center;
-    padding: 12px 20px;
-    font-size: 18px;
-    color: white;
-    background: #8B0304	;
-    border: none;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 400;
-	align-self: center;
-    transition: background 0.3s ease-in-out, transform 0.2s;
+    background-color:#9b3b3b;
+	color: white;
+	font-weight: 400;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	text-decoration: none;
+	padding: 10px 15px;
 }
 
 
@@ -618,13 +771,14 @@ footer {
 
 /* Page meal */ 
 
-#meal-details {
+#meal-details {   
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    width: 50%; 
+    flex-direction: row;
+    align-items: flex-start; 
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    width: 90%; 
     margin: 0 auto;
 }
 
@@ -632,19 +786,19 @@ footer {
 .meal-cardmeal {
     background: white;
     padding: 20px; 
-    width: 600px; 
+    width: 45%; 
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    max-height: 500px;
-    overflow-y: auto; 
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
+	
 }
 
 
 .meal-cardmeal img {
     width: 100%;
     height: 400px; 
-    object-fit: contain; 
+    object-fit: cover; 
+    border-radius: 10px;
 }
 
 
@@ -653,38 +807,42 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 3px;
-    align-items: center;
+    align-items: flex-start; 
     padding-left: 15px;
     width: 100%;
-
 }
 
-/* je dois faire le h3 et le a */ 
+
 .meal-cardmeal h3 {
-	font-size: 1.4em;
-	margin-bottom: 10px;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    text-align: left;
 }
 
 .meal-cardmeal a {
-	display: inline-block;
-	font-size: 18px;
-	color: #080200;
-	text-decoration: none;
-	font-weight: bold;
+    display: inline-block;
+    font-size: 18px;
+    color: #080200;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .meal-cardmeal a:hover {
-	color: #8B0304; ;
-}
-
-/* meal name  à faire plus tard */
-#meal-name {
-	font-size: 1.8em;
-	
+    color: #8B0304;
 }
 
 
-.meal-cardmeal p {
+.meal-cardmeal2 {
+    background: white;
+    padding: 20px;
+    width: 50%; 
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+}
+
+
+.meal-cardmeal2 p {
     font-size: 1.1em;
     line-height: 1.6;
     text-align: justify; 
@@ -693,35 +851,21 @@ footer {
     border-left: 5px solid #ff5733; 
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    max-width: 800px;
-    margin: 10px auto;
+    max-width: 100%;
     font-weight: 500;
     white-space: pre-line;
 }
 
-/* cela me permet de définir la largeur de la barre de défilement. */
-.meal-cardmeal::-webkit-scrollbar {
-    width: 8px; 
+
+#meal-name {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-/* cela Change la couleur du fond de la scrollbar. */
-.meal-cardmeal::-webkit-scrollbar-track {
-    background: #f0f0f0; 
-    border-radius: 5px; 
-}
-
-
-/* cela modifie la barre de défilement elle-même. */
-
-.meal-cardmeal::-webkit-scrollbar-thumb {
-    background: #8B0304 ; 
-    border-radius: 5px; 
-    transition: background 0.3s ease;
-}
-
-
-.meal-cardmeal::-webkit-scrollbar-thumb:hover {
-    background: #000000; 
+#meal-footer{
+	gap: 20px;
 }
 
 
@@ -729,7 +873,7 @@ footer {
 
 .btn {
 	display: inline-block;
-	margin-top: 10px;
+	margin: 10px 5px;
 	padding: 8px 15px;
     font-size: 18px;
     color: white;
@@ -757,7 +901,11 @@ footer {
 	justify-content: center;
 	gap: 20px;
 	padding: 20px;
-
+	background: #F8F0E3;
+	border-radius: 10px;
+	width: fit-content;
+	margin: 0 auto;
+	margin-bottom: 20px;
 }
 
 
@@ -767,17 +915,21 @@ footer {
 	width: 250px;
 	text-align: center;
 	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	
 
 }
 
 
-.meal-card-ingredient{
-	background:#9b3b3b;
+.meal-card-ingredient:hover{
+	background:transparent;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	color: #F8F0E3;
-	transform: scale(1.05);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	transform: translateY(-5px);
+	color: black;
+	transform: scale(1.5); 
+	box-shadow: 0 6px 12px rgba(145, 62, 62, 0.3);
+	transform: translateY(-8px);
 }
 
 
@@ -788,6 +940,33 @@ footer {
 	width: 100%;
 	border-radius: 10px;
 	object-fit: contain;
+}
+
+.meal-card-ingredient img:hover {
+	transform: scale(1.05);
+	transition: transform 0.5s ease-in-out;
+
+}
+
+
+.btnMealIngredient{
+	margin: 5px;
+	padding: 10px 15px;
+	background-color:#9b3b3b;
+	color: white;
+	font-weight: 400;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	text-decoration: none;
+}
+
+.btnMealIngredient:hover {
+	color: #ffffff;
+	background: #080200;
+	transform: scale(1.05);
+	font-weight: 700;
 }
 
 

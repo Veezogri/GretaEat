@@ -1,4 +1,3 @@
-//document.addEventListener("DOMContentLoaded", () => {
     setupEventListeners();
     loadCategories();
     loadCategoryMeals();
@@ -35,7 +34,7 @@
         }
     }
     
-//});
+
 
 
 
@@ -168,7 +167,7 @@ async function loadCategoryMeals() {
             mealCard.innerHTML = `
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
-                <a href="meal.html?id=${meal.idMeal}" class="BoutonPage">Voir la recette</a>
+                <a href="meal.html?id=${meal.idMeal}" id="BoutonCategorie">Voir la recette</a>
             `;
             mealsContainer.appendChild(mealCard);
         });
@@ -232,6 +231,14 @@ async function loadMealDetails() {
             <h3>Origine : <a href="area.html?area=${encodeURIComponent(meal.strArea)}">${meal.strArea}</a></h3>
             <h3>Ingrédients :</h3>
             <ul>${ingredientsList}</ul>
+            
+            
+        `;
+
+        // création d'une autre div pour les instructions afin de le mettre à coté de la div meal-cardmeal */
+        const mealcard2 = document.createElement("div");
+        mealcard2.classList.add("meal-cardmeal2");
+        mealcard2.innerHTML = `
             <h3>Instructions :</h3>
             <p>${meal.strInstructions}</p>
         `;
@@ -239,6 +246,7 @@ async function loadMealDetails() {
         // Nettoyage et ajout du plat
         mealContainer.innerHTML = "";
         mealContainer.appendChild(mealcard);
+        mealContainer.appendChild(mealcard2);
 
         // Ajout des liens des ingrédients dans le footer
         document.getElementById("meal-footer").innerHTML = `
@@ -277,7 +285,7 @@ async function fetchMealsByFirstLetter(letter) {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`);
         const data = await response.json();
 
-        const mealsContainer = document.getElementById("meals-container");
+        const mealsContainer = document.getElementById("meals-container-alphabet");
         if (!mealsContainer) return; // Vérifier si l'élément existe
 
         mealsContainer.innerHTML = ""; // Vider le conteneur avant d'ajouter du contenu
@@ -290,11 +298,11 @@ async function fetchMealsByFirstLetter(letter) {
         // Génération des cartes de plats
         data.meals.forEach(meal => {
             const mealCard = document.createElement("div");
-            mealCard.classList.add("meal-card");
+            mealCard.classList.add("meal-cardalphabet");
             mealCard.innerHTML = `
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
-                <a href="meal.html?id=${meal.idMeal}" class="BoutonPage">Voir la recette</a>
+                <a href="meal.html?id=${meal.idMeal}" id="BoutonCategorie">Voir la recette</a>
             `;
             mealsContainer.appendChild(mealCard);
         });
@@ -360,7 +368,7 @@ async function fetchMealsByName(name) {
             mealCard.innerHTML = `
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
-                <a href="meal.html?id=${meal.idMeal}" class="BoutonPage">Voir la recette</a>
+                <a href="meal.html?id=${meal.idMeal}" class="Bouton-Search-Value">Voir la recette</a>
             `;
             mealsContainer.appendChild(mealCard);
         });
@@ -447,7 +455,7 @@ async function fetchMealsByArea() {
             mealCard.innerHTML = `
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
-                <a href="meal.html?id=${meal.idMeal}" class="BoutonPage">Voir la recette</a>
+                <a href="meal.html?id=${meal.idMeal}" class="AreaBouton">Voir la recette</a>
             `;
             mealsContainer.appendChild(mealCard);
         });
@@ -472,8 +480,7 @@ async function MealsByIngredient(ingredient){
         const reponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
         const data = await reponse.json();
 
-        console.log("URL API :", `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`); // ✅ Vérifier l'URL de la requête
-        console.log("Données API :", data); // ✅ Vérifier la réponse API
+
 
         const mealsContainer = document.getElementById("meals-container-ingredient");
         if (!mealsContainer) return;
@@ -491,7 +498,7 @@ async function MealsByIngredient(ingredient){
             mealCard.innerHTML = `
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                 <h3>${meal.strMeal}</h3>
-                <a href="meal.html?id=${meal.idMeal}" class="btn">Voir la recette</a>
+                <a href="meal.html?id=${meal.idMeal}" class="btnMealIngredient">Voir la recette</a>
             `;
             mealsContainer.appendChild(mealCard);
         });
