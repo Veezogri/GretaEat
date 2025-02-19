@@ -8,8 +8,7 @@
 body {
 	font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background: #f5f5f5
-    
+    background: #f5f5f5;
 
 }
 
@@ -23,12 +22,6 @@ body {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 }
-
-
-
-
-
-
 
 #TitreBienvenueIndex{
 	font-size: 2em;
@@ -50,6 +43,7 @@ body {
 	width:200px;
 	margin-bottom: 20px;
 	object-fit: contain;
+	margin: 0;
 	
 }
 
@@ -268,6 +262,77 @@ footer {
     font-size: 1.8em;
     color: #8B0304;
     margin-bottom: 10px;
+}
+
+
+/* Commencement du responsie design de la page index */
+
+/* Version tablette */
+
+@media (max-width: 992px){
+	#IndexHeader h2 {
+		font-size: 1.5em;
+	}
+
+	#IndexNav ul {
+		font-weight: bolder;
+	}
+
+	#IndexNav img{
+		width: 100px;
+		margin: 0;
+	}
+
+	
+
+	#PrésentationCategorie, #PrésentationAlphabet, #ZoneGeopgraphique {
+		flex-direction: column;
+		align-items: center;		
+	}
+
+	#ZoneDeTexte1, #ZoneDeTexte2, #ZoneDeTexte3 {
+		width: 100%;
+	}
+
+	#TitreBienvenueIndex{
+		font-size: 1.5em;
+	}
+
+	footer{
+		font-size: medium;
+	}
+}
+
+/* Version mobile */
+@media (max-width:768px){
+
+	
+	
+
+	#IndexNav ul {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0;
+	}
+
+	#PrésentationCategorie, #PrésentationAlphabet, #ZoneGeopgraphique {
+		flex-direction: column;
+		align-items: center;
+		
+	}
+
+	#ZoneDeTexte1, #ZoneDeTexte2, #ZoneDeTexte3 {
+		width: 100%;
+		text-align: center;
+	}
+
+	#TitreBienvenueIndex, #IndexHeader h2 {
+		font-size: 1.3em;
+	}
+
+	
+
 }
 
 
@@ -968,14 +1033,7 @@ footer {
 }
 
 
-/* Commencement du responsie design de la page index */
 
-@media (max-width: 992px){
-	#IndexHeader h2 {
-		font-size: 1.5em;
-	}
-
-}
 
 
 

@@ -1,110 +1,143 @@
-/* Page Html random */ 
-
-body {
-	font-family: Arial, sans-serif;
-	text-align: center;
+/* Réinitialisation des marges et paddings */
+* {
 	margin: 0;
 	padding: 0;
-	background-color: #f4f4f4;
+	box-sizing: border-box;
 }
-
-header {
-	background-color: #571405;
-	color: white;
-	padding: 20px;
-    width: 50%;
-    margin: 0 auto;
-    border-radius: 20px;
+/* Style du corps */
+body {
+	font-family: 'Arial', sans-serif;
+	line-height: 1.6;
+	background: #f5f5f5;
 }
-button {
-	padding: 10px 25px;
-	background-color: #ff5733;
-    border-radius: 10px;
-
-	color: white;
-	border: none;
-	cursor: pointer;
-	margin: 20px;
+/* En-tête */
+#IndexHeader {
+	color: #fff;
+	padding: 10px 0;
+	text-align: center;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-#meal-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: 20px;
-    width: 20%;
-    margin: 0 auto;
-    
+#TitreBienvenueIndex, #IndexHeader h2 {
+	font-size: 2em;
+	color: #b33b4b;
+	font-weight: bold;
 }
-
-
-#meal-container li{
-    list-style: none;
-
+/* Navigation */
+#IndexNav img {
+	width: 150px;
+	object-fit: contain;
 }
-img {
-	width: 300px;
-	border-radius: 10px;
-	margin-top: 10px;
-}
-
-/*
-footer {
-	margin-top: 20px;
-	padding: 10px;
-	background-color: #333;
-	color: white;
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-/* page meal */
-/* Détails du plat */
-/* Grille des plats */
-.meal-details{
+#IndexNav ul {
+	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 20px;
+	gap: 15px;
+}
+#IndexNav ul li a {
+	display: flex;
+	align-items: center;
+	padding: 8px 12px;
+	font-size: 1em;
+	font-weight: bold;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+/* Conteneur principal */
+main {
 	padding: 20px;
-}
-/* Carte de chaque plat */
-.meal-card {
-	background: white;
-	padding: 15px;
-	width: 250px;
 	text-align: center;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.meal-card img {
+/* Cartes de catégories et repas */
+.category-card, .meal-card, .meal-cardalphabet, .meal-card-ingredient, .meal-card2 {
+	width: 90%;
+	max-width: 300px;
+	text-align: center;
+	margin: 10px auto;
+}
+.category-card img, .meal-card img, .meal-cardalphabet img, .meal-card-ingredient img, .meal-card2 img {
 	width: 100%;
 	border-radius: 10px;
+	transition: transform 0.3s ease-in-out;
 }
-.meal-card h3 {
-	margin: 10px 0;
+.category-card img:hover, .meal-card img:hover, .meal-cardalphabet img:hover, .meal-card-ingredient img:hover {
+	transform: scale(1.05);
 }
-/* Bouton standard */
-.btn {
-	display: inline-block;
-	margin-top: 10px;
-	padding: 8px 12px;
-	background-color: #ff5733;
+/* Grilles responsives */
+#categories-container, #meals-container, #meals-container-alphabet, #meals-container-ingredient, #areas-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 15px;
+	padding: 10px;
+}
+/* Boutons */
+.BoutonPage, .btnMealIngredient, .AreaBouton {
+	width: 100%;
+	max-width: 250px;
+	display: block;
+	padding: 10px;
+	font-size: 16px;
+	text-align: center;
+	background: #8B0304;
 	color: white;
-	text-decoration: none;
 	border-radius: 5px;
-	transition: background-color 0.3s;
+	text-decoration: none;
+	transition: background 0.3s;
 }
-.btn:hover {
-	background-color: #e04e2a;
+.BoutonPage:hover, .btnMealIngredient:hover, .AreaBouton:hover {
+	background: #080200;
+}
+/* Formulaires de recherche */
+#search-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+#search-input {
+	width: 100%;
+	max-width: 300px;
+	padding: 8px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+#search-btn, #random-btn {
+	padding: 8px 12px;
+	background: #9b3b3b;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+	#IndexHeader h2 {
+		font-size: 1.5em;
+	}
+	#IndexNav ul {
+		flex-direction: column;
+		align-items: center;
+	}
+	#PrésentationCategorie, #PrésentationAlphabet, #ZoneGeopgraphique {
+		flex-direction: column;
+		align-items: center;
+		padding: 15px;
+	}
+	#ZoneDeTexte1, #ZoneDeTexte2, #ZoneDeTexte3 {
+		width: 100%;
+		text-align: center;
+	}
+}
+@media (max-width: 480px) {
+	#TitreBienvenueIndex, #IndexHeader h2 {
+		font-size: 1.2em;
+	}
+	.BoutonPage, .btnMealIngredient, .AreaBouton {
+		font-size: 14px;
+		padding: 8px;
+	}
 }
 
 
