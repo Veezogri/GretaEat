@@ -270,9 +270,7 @@ footer {
 /* Version tablette */
 
 @media (max-width: 992px){
-	#IndexHeader h2 {
-		font-size: 1.5em;
-	}
+	
 
 	#IndexNav ul {
 		font-weight: bolder;
@@ -301,12 +299,22 @@ footer {
 	footer{
 		font-size: medium;
 	}
+
+	#TitreDecouvrir{
+		font-size: 1.5em;
+	}
+
+	#TitreBienvenueIndex{
+		font-size: 1.9em;
+	}
 }
 
 /* Version mobile */
 @media (max-width:768px){
 
-	
+	#TitreBienvenueIndex{
+		font-size: 1.9em;
+	}
 	
 
 	#IndexNav ul {
@@ -331,6 +339,10 @@ footer {
 		font-size: 1.3em;
 	}
 
+	#TitreDecouvrir{
+		font-size: 1.2em;
+	}
+
 	
 
 }
@@ -345,7 +357,6 @@ footer {
 	gap: 20px;
 }
 #TitleCategories{
-	margin-top: 40px;
 	font-size: 2em;
 	margin-bottom: 20px;
 	color: #8B0304;
