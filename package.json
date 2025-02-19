@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Veezogri/GretaEat/issues"
   },
-  "homepage": "https://github.com/Veezogri/GretaEat#readme"
+  "homepage": "https://github.com/Veezogri/GretaEat#readme",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
 }

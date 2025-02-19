@@ -364,14 +364,16 @@ async function fetchMealsByName(name) {
         }
 
         //  Génération des cartes de plats
-        data.meals.forEach(meal => {
+        const validMeals = data.meals.filter(meal => meal.strMealThumb !== null && meal.strMeal !== null);
+        if (validMeals.length === 0) {
+            mealsContainer.innerHTML = "<p>Aucun plat valide trouvé.</p>";
+            console.log("Aucun plat valide trouvé.");
+            return;
+        }
+        validMeals.forEach(meal => {
             const mealCard = document.createElement("div");
             mealCard.classList.add("meal-card");
-            mealCard.innerHTML = `
-                <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-                <h3>${meal.strMeal}</h3>
-                <a href="meal.html?id=${meal.idMeal}" class="Bouton-Search-Value">Voir la recette</a>
-            `;
+            mealCard.innerHTML = ` <img src="${meal.strMealThumb}" alt="${meal.strMeal}"> <h3>${meal.strMeal}</h3> <a href="meal.html?id=${meal.idMeal}" class="Bouton-Search-Value">Voir la recette</a> `;
             mealsContainer.appendChild(mealCard);
         });
 
