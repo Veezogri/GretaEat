@@ -240,7 +240,7 @@ async function loadMealDetails() {
         mealcard2.classList.add("meal-cardmeal2");
         mealcard2.innerHTML = `
             <h3>Instructions :</h3>
-            <p>${meal.strInstructions}</p>
+            <p class="instructions">${meal.strInstructions}</p>
         `;
 
         // Nettoyage et ajout du plat
@@ -501,7 +501,10 @@ async function MealsByIngredient(ingredient){
                 <a href="meal.html?id=${meal.idMeal}" class="btnMealIngredient">Voir la recette</a>
             `;
             mealsContainer.appendChild(mealCard);
+            
+            
         });
+
 
     }
     catch (error) {

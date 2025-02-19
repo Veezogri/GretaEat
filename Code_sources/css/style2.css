@@ -319,9 +319,14 @@ footer {
 
 	#IndexNav ul {
 		display: flex;
-		flex-direction: column;
+		font-size: 0.8em;
 		align-items: center;
 		gap: 0;
+		justify-content: center;
+	}
+
+	#IndexNav img{
+		display: none;
 	}
 
 	#PrésentationCategorie, #PrésentationAlphabet, #ZoneGeopgraphique {
@@ -358,7 +363,8 @@ footer {
 }
 #TitleCategories{
 	font-size: 2em;
-	margin-bottom: 20px;
+	text-align: center;
+	margin: 5px 0;
 	color: #8B0304;
 
 }
@@ -369,7 +375,7 @@ footer {
 }
 .category-card {
 	background:transparent;
-    color: #F8F0E3;
+    color: black;
 	padding: 20px;
 	width: 350px;
 	text-align: center;
@@ -394,10 +400,32 @@ footer {
 .category-card:hover {
 	background:transparent;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #F8F0E3;
+    color:  #2C48D3;
 	transform: scale(1.5); 
     box-shadow: 0 6px 12px rgba(145, 62, 62, 0.3);
     transform: translateY(-8px); 
+}
+
+/* Responsive Design de la page categories */
+@media (max-width: 992px) {
+	
+	#TitleCategories{
+		font-size: 1.5em;
+		text-align: center;
+		
+	}
+
+
+}
+@media (max-width: 768px) {
+
+	#TitleCategories{
+		font-size: 1.5em;
+		text-align: center;
+		
+	}
+
+	
 }
 
 /* Page categorie */
@@ -408,7 +436,6 @@ footer {
 	justify-content: center;
 	gap: 20px;
 	padding: 20px;
-	background: #F8F0E3;
 	border-radius: 10px;
 	width: 90%;
 	margin: 0 auto;
@@ -481,6 +508,29 @@ footer {
 }
 
 
+/* Responsive Design de la page categorie */
+@media (max-width: 992px) {
+	
+	#TitleCategories{
+		font-size: 1.4em;
+		text-align: center;
+		
+	}
+
+
+}
+@media (max-width: 768px) {
+
+	#TitleCategories{
+		font-size: 1.6em;
+		text-align: center;
+		
+	}
+
+	
+}
+
+
 
 /* Page first-letter */
 
@@ -541,6 +591,30 @@ footer {
 	font-weight: 700;
 }
 
+/* Responsive Design de la page firstletter */
+@media (max-width: 992px) {
+	
+	#TitleCategories{
+		font-size: 1.4em;
+		text-align: center;
+		
+	}
+	
+	
+
+
+}
+@media (max-width: 768px) {
+
+	#TitleCategories{
+		font-size: 1.6em;
+		text-align: center;
+		
+	}
+
+	
+}
+
 
 /* 🌍 Conteneur des zones géographiques */
 #areas-container {
@@ -552,7 +626,6 @@ footer {
 	width: 90%;
 	margin: 0 auto;
 	margin-bottom: 20px;
-	background: #F8F0E3;
 	border-radius: 10px;
 }
 
@@ -672,6 +745,56 @@ footer {
 	color: #8B0304;
 }
 
+/* Responsive Design de la page areas */
+@media (max-width: 992px) {
+	
+	#TitleCategories{
+		font-size: 1.4em;
+		text-align: center;
+		
+	}
+	
+	
+
+
+}
+@media (max-width: 768px) {
+
+	#TitleCategories{
+		font-size: 1.6em;
+		text-align: center;
+		
+	}
+
+	
+}
+
+
+/* Responsive Design de la page area */
+
+@media (max-width: 992px) {
+	
+	#TitleCategories{
+		font-size: 1.4em;
+		text-align: center;
+		
+	}
+
+
+}
+
+@media (max-width: 768px) {
+
+	#TitleCategories{
+		font-size: 1.6em;
+		text-align: center;
+		
+	}
+
+	
+}
+
+
 /* Page search */
 
 /* Conteneur de recherche */
@@ -779,6 +902,49 @@ footer {
 	margin: 10px 0;
 }
 
+/* Responsive Design de la page search */
+@media (max-width: 992px) {
+	
+	#TitleCategories{
+		font-size: 1.4em;
+		text-align: center;
+		
+	}
+}
+
+
+@media (max-width: 768px) {
+
+	#TitleCategories{
+		font-size: 1.6em;
+		text-align: center;
+		
+	}
+
+	#search-container {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 20px;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#search-input {
+		width: 50%;
+		margin-bottom: 10px;
+	}
+
+	#search-btn {
+		width: 50%;
+	}
+
+	#random-btn {
+		width: 50%;
+	}
+
+	
+}
+
 
 /* carte de chaque random plat */ 
 
@@ -847,7 +1013,7 @@ footer {
 
 #meal-details {   
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start; 
     justify-content: center;
     gap: 30px;
@@ -860,7 +1026,7 @@ footer {
 .meal-cardmeal {
     background: white;
     padding: 20px; 
-    width: 45%; 
+    width: 70%; 
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
@@ -909,17 +1075,16 @@ footer {
 .meal-cardmeal2 {
     background: white;
     padding: 20px;
-    width: 50%; 
+    width: 100%; 
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    text-align: justify;
+    
 }
 
 
 .meal-cardmeal2 p {
     font-size: 1.1em;
     line-height: 1.6;
-    text-align: justify; 
     padding: 12px;
     background: white;
     border-left: 5px solid #ff5733; 
@@ -927,7 +1092,8 @@ footer {
     border-radius: 5px;
     max-width: 100%;
     font-weight: 500;
-    white-space: pre-line;
+	
+
 }
 
 
@@ -966,6 +1132,71 @@ footer {
 	transform: scale(1.05);
 }
 
+/* Responsive Design de la page meal */
+@media (max-width: 992px) {
+	
+	#meal-details{
+		width: 100%;
+	}
+
+	.meal-cardmeal{
+		width: 100%;
+	}
+
+	.meal-cardmeal img{
+		height: 300px;
+	}
+
+	.meal-cardmeal h3{
+		font-size: 1.2em;
+	}
+
+	.meal-cardmeal p{
+		font-size: 1em;
+	}
+
+	#meal-name{
+		font-size: 1.5em;
+	}
+
+	.btn{
+		font-size: 1em;
+	}
+
+}
+
+@media (max-width: 768px) {
+	
+	#meal-details{
+		width: 100%;
+	}
+
+	.meal-cardmeal{
+		width: 100%;
+	}
+
+	.meal-cardmeal img{
+		height: 300px;
+	}
+
+	.meal-cardmeal h3{
+		font-size: 1.2em;
+	}
+
+	.meal-cardmeal p{
+		font-size: 1em;
+	}
+
+	#meal-name{
+		font-size: 1.5em;
+	}
+
+	.btn{
+		font-size: 1em;
+	}
+
+}
+
 
 /* Page ingrédient */ 
 
@@ -975,7 +1206,6 @@ footer {
 	justify-content: center;
 	gap: 20px;
 	padding: 20px;
-	background: #F8F0E3;
 	border-radius: 10px;
 	width: fit-content;
 	margin: 0 auto;
@@ -1043,6 +1273,30 @@ footer {
 	font-weight: 700;
 }
 
+
+/* Responsive Design de la page ingrédient */
+@media (max-width: 992px) {
+	
+	#TitleCategories{
+		font-size: 1.4em;
+		text-align: center;
+		
+	}
+
+
+}
+
+
+@media (max-width: 768px) {
+
+	#TitleCategories{
+		font-size: 1.6em;
+		text-align: center;
+		
+	}
+
+	
+}
 
 
 
