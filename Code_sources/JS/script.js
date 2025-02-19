@@ -318,17 +318,19 @@ function setupSearchFunctionality() {
     const searchInput = document.getElementById("search-input");
     const searchBtn = document.getElementById("search-btn");
     const mealsContainer = document.getElementById("meals-containerSearch");
+    const randomContainer = document.getElementById("container-random");
 
-    if (!searchInput || !searchBtn || !mealsContainer) return; // Vérifier si les éléments existent
+    if (!searchInput || !searchBtn || !mealsContainer || !randomContainer ) return; // Vérifier si les éléments existent
 
     // Événement au clic sur le bouton recherche
     searchBtn.addEventListener("click", () => {
         const query = searchInput.value.trim();
-        if (query) {
-            fetchMealsByName(query);
-        } else {
+        if (!query) {
+            randomContainer.innerHTML = "";
             mealsContainer.innerHTML = "<p>Veuillez entrer un nom de plat à rechercher.</p>";
+            return;
         }
+        fetchMealsByName(query);
     });
 
     // Événement pour activer la recherche avec "Entrée"
