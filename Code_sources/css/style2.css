@@ -11,9 +11,10 @@ body {
     background: #f5f5f5;
 
 }
-
-
-
+main {
+	padding: 40px 20px;
+	text-align: center;
+}
 /* Style de l'en-tête */
 #IndexHeader {
 	color: #fff;
@@ -89,24 +90,6 @@ body {
 	align-items: center;
 }
 
-#IndexNav ul li:hover a i {
-    color: white;
-}
-
-
-/* Style du contenu principal */
-main {
-	padding: 40px 20px;
-	text-align: center;
-}
-/* Style des sous-titres */
-
-
-
-
-
-
-
 /* Style du pied de page */
 footer {
 	color:black;
@@ -119,8 +102,8 @@ footer {
 }
 
 
-#PrésentationCategorie{
-    display: flex;
+.SectionIndex{
+	display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: 1000px;
@@ -130,25 +113,8 @@ footer {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-	
-
 }
 
-#ZoneGeopgraphique{
-	display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 60px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-	
-	
-
-}
 .ImgContainer{
     overflow: hidden;
     border-radius: 15px;
@@ -173,12 +139,11 @@ footer {
 
 .BoutonPage {
     display: inline-block;
-    padding: 12px 20px;
+    padding: 12px 15px;
     font-size: 18px;
-    color: white;
-    background: #8B0304;
+    color:#b33b4b;
     border: none;
-    width: 250px; /* ✅ Fixe une largeur standard */
+    width: 200px; /* ✅ Fixe une largeur standard */
     text-align: center; /* ✅ Centre le texte */
     border-radius: 8px;
     text-decoration: none;
@@ -189,33 +154,12 @@ footer {
 
 
 .BoutonPage:hover {
-    color: #ffffff;
-	background: #080200;
+    color: #2C48D3;
 	transform: scale(1.05);
 }
 
 
-
-
-#PrésentationAlphabet{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-
-}
-
-
-
-
-
-#ZoneDeTexte1 {
+.ZoneDeTexteIndex {
     display: flex;
 	gap: 20px;
 	flex-direction: column;
@@ -225,45 +169,11 @@ footer {
 	text-align: left;
 }
 
-#ZoneDeTexte1  h2 {
+.ZoneDeTexteIndex  h2 {
     font-size: 1.8em;
     color: #b33b4b;
     margin-bottom: 10px;
 }
-
-
-#ZoneDeTexte2 {
-    display: flex;
-	gap: 20px;
-	flex-direction: column;
-	align-items: center;
-	margin: 20px;
-	width: 50%;
-	text-align: left;
-}
-
-#ZoneDeTexte2  h2 {
-    font-size: 1.8em;
-    color:#b33b4b;
-    margin-bottom: 10px;
-}
-
-#ZoneDeTexte3 {
-    display: flex;
-	gap: 20px;
-	flex-direction: column;
-	align-items: center;
-	margin: 20px;
-	width: 50%;
-	text-align: left;
-}
-
-#ZoneDeTexte3  h2 {
-    font-size: 1.8em;
-    color: #8B0304;
-    margin-bottom: 10px;
-}
-
 
 /* Commencement du responsie design de la page index */
 
@@ -401,11 +311,11 @@ footer {
 	justify-content: center;
 	gap: 20px;
 }
-#TitleCategories{
+.TitleCategories{
 	font-size: 2em;
 	text-align: center;
 	margin: 5px 0;
-	color: #8B0304;
+	color:#b33b4b;
 
 }
 .category-card a {
@@ -449,7 +359,7 @@ footer {
 /* Responsive Design de la page categories */
 @media (max-width: 992px) {
 	
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.5em;
 		text-align: center;
 		
@@ -459,7 +369,7 @@ footer {
 }
 @media (max-width: 768px) {
 
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.5em;
 		text-align: center;
 		
@@ -470,7 +380,7 @@ footer {
 
 /* Page categorie */
 /* Grille des plats */
-#meals-container{
+#meals-container,#meals-container-alphabet, #meals-container-ingredient{
     display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -483,7 +393,7 @@ footer {
 
 }
 /* Carte de chaque plat */
-.meal-card {
+.meal-card, .meal-card-ingredient {
 	background: transparent;
 	padding: 15px;
 	width: 250px;
@@ -505,7 +415,7 @@ footer {
     transform: translateY(-8px);
 }
 
-.meal-card img:hover {
+.meal-card img:hover, .meal-card-ingredient img:hover, .meal-card2 img:hover, .meal-card2 img:hover, .meal-card-ingredient img:hover  {
 	transform: scale(1.05);
 	transition: transform 0.5s ease-in-out;
 
@@ -516,7 +426,7 @@ footer {
 .meal-card h3{
 	margin: 10px 0;
 }
-.meal-card img {
+.meal-card img, .meal-card2 img,.meal-card-ingredient img  {
 	width: 100%;
 	border-radius: 10px;
 	object-fit: contain;
@@ -540,7 +450,7 @@ footer {
 	
 }
 
-#BoutonCategorie:hover {
+#BoutonCategorie:hover, .alphabet-button:hover, .AreaBouton:hover, .Bouton-Search-Value:hover, .btnMealIngredient:hover{
 	color: #ffffff;
 	background: #080200;
 	transform: scale(1.05);
@@ -551,7 +461,7 @@ footer {
 /* Responsive Design de la page categorie */
 @media (max-width: 992px) {
 	
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.4em;
 		text-align: center;
 		
@@ -561,7 +471,7 @@ footer {
 }
 @media (max-width: 768px) {
 
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.6em;
 		text-align: center;
 		
@@ -574,15 +484,6 @@ footer {
 
 /* Page first-letter */
 
-#meals-container-alphabet {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 20px;
-	padding: 20px;
-}
-
-
 #alphabet-container {
 	display: flex;
 	flex-wrap: wrap;
@@ -590,7 +491,7 @@ footer {
 	margin: 20px 0;
 }
 
-.meal-cardalphabet{
+.meal-cardalphabet, .meal-card2{
 	background:transparent;
 	padding: 15px;
 	width: 250px;
@@ -601,7 +502,7 @@ footer {
 	justify-content: space-between;
 }
 
-.meal-cardalphabet:hover{
+.meal-cardalphabet:hover , .meal-card2:hover , .meal-card-ingredient:hover{
 	background:transparent;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	color: black;
@@ -611,7 +512,7 @@ footer {
 }
 
 
-.alphabet-button {
+.alphabet-button, .area-card, .AreaBouton, .Bouton-Search-Value, .btnMealIngredient {
 	margin: 5px;
 	padding: 10px 15px;
 	background-color:#9b3b3b;
@@ -623,18 +524,10 @@ footer {
 	font-size: 16px;
 }
 
-
-.alphabet-button:hover {
-	color: #ffffff;
-	background: #080200;
-	transform: scale(1.05);
-	font-weight: 700;
-}
-
 /* Responsive Design de la page firstletter */
 @media (max-width: 992px) {
 	
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.4em;
 		text-align: center;
 		
@@ -646,7 +539,7 @@ footer {
 }
 @media (max-width: 768px) {
 
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.6em;
 		text-align: center;
 		
@@ -657,7 +550,7 @@ footer {
 
 
 /* 🌍 Conteneur des zones géographiques */
-#areas-container {
+#areas-container, #meals-containerSearch {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -670,15 +563,6 @@ footer {
 }
 
 .area-card {
-    margin: 5px;
-	padding: 10px 15px;
-	background-color:#9b3b3b;
-	color: white;
-	font-weight: 400;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
 	text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -695,7 +579,7 @@ footer {
 }
 
 
-.area-card:hover {
+.area-card:hover, .random-card a:hover {
 	color: #ffffff;
 	background: #080200;
 	transform: scale(1.05);
@@ -718,28 +602,7 @@ footer {
 }
 
 
-
-.meal-card2 {
-	background:transparent;
-	padding: 15px;
-	width: 250px;
-	text-align: center;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
 .AreaBouton{
-	margin: 5px;
-	padding: 10px 15px;
-	background-color:#9b3b3b;
-	color: white;
-	font-weight: 400;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
 	text-decoration: none;
 
 }
@@ -750,34 +613,6 @@ footer {
 
 }
 
-.meal-card2:hover{
-	background:transparent;
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	color: black;
-	transform: scale(1.5); 
-	box-shadow: 0 6px 12px rgba(145, 62, 62, 0.3);
-	transform: translateY(-8px);
-}
-
-
-.meal-card2 img {
-	width: 100%;
-	border-radius: 10px;
-	object-fit: contain;
-}
-
-.meal-card2 img:hover {
-	transform: scale(1.05);
-	transition: transform 0.5s ease-in-out;
-
-}
-
-.AreaBouton:hover {
-	color: #ffffff;
-	background: #080200;
-	transform: scale(1.05);
-	font-weight: 700;
-}
 
 #titleheader{
 	font-size: 2em;
@@ -788,7 +623,7 @@ footer {
 /* Responsive Design de la page areas */
 @media (max-width: 992px) {
 	
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.4em;
 		text-align: center;
 		
@@ -800,7 +635,7 @@ footer {
 }
 @media (max-width: 768px) {
 
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.6em;
 		text-align: center;
 		
@@ -814,7 +649,7 @@ footer {
 
 @media (max-width: 992px) {
 	
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.4em;
 		text-align: center;
 		
@@ -825,7 +660,7 @@ footer {
 
 @media (max-width: 768px) {
 
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.6em;
 		text-align: center;
 		
@@ -852,7 +687,7 @@ footer {
 	border-radius: 5px 0 0 5px;
 	font-size: 16px;
 }
-#search-btn {
+#search-btn, #random-btn {
 	margin: 5px;
 	padding: 12px 15px;
 	background-color:#9b3b3b;
@@ -864,73 +699,20 @@ footer {
 	font-size: 16px;
 	text-decoration: none;
 }
-#search-btn:hover {
+#search-btn:hover, #random-btn:hover {
 	color: #ffffff;
 	background: #080200;
 	transform: scale(1.05);
 	cursor: pointer;
 }
-
-
-#random-btn{
-	margin: 5px;
-	padding: 12px 15px;
-	background-color:#9b3b3b;
-	color: white;
-	font-weight: 400;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
-	text-decoration: none;
-
-}
-
 
 #random-btn:hover{
-	color: #ffffff;
-	background: #080200;
-	transform: scale(1.05);
-	cursor: pointer;
 	margin-left: 10px;
-
 }
 /* Grille des plats */
-#meals-containerSearch {
-	display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-	width: 90%;
-	margin: 0 auto;
-	margin-bottom: 20px;
-	border-radius: 10px;
-}
-
-
 .Bouton-Search-Value{
-	margin: 5px;
-	padding: 10px 15px;
-	background-color:#9b3b3b;
-	color: white;
-	font-weight: 400;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
 	text-decoration: none;
 }
-
-.Bouton-Search-Value:hover {
-	color: #ffffff;
-	background: #080200;
-	transform: scale(1.05);
-	font-weight: 700;
-}
-
-
-
 
 
 .meal-cardSearch img {
@@ -945,7 +727,7 @@ footer {
 /* Responsive Design de la page search */
 @media (max-width: 992px) {
 	
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.4em;
 		text-align: center;
 		
@@ -955,7 +737,7 @@ footer {
 
 @media (max-width: 768px) {
 
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.6em;
 		text-align: center;
 		
@@ -1041,13 +823,7 @@ footer {
 }
 
 
-.random-card a:hover{
-	color: #ffffff;
-	background: #080200;
-	transform: scale(1.05);
-	font-weight: bolder;
 
-}
 
 /* Page meal */ 
 
@@ -1055,19 +831,16 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
-    justify-content: center;
     gap: 30px;
     padding: 20px;
-    width: 90%; 
-    margin: 0 auto;
+
 }
 
 
 .meal-cardmeal {
     background: white;
     padding: 20px; 
-    width: 70%; 
-    text-align: center;
+    width: 70%;
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
 	
@@ -1075,10 +848,10 @@ footer {
 
 
 .meal-cardmeal img {
-    width: 100%;
-    height: 400px; 
-    object-fit: cover; 
+    width: 50%;
+    object-fit: contain; 
     border-radius: 10px;
+	display: flex;
 }
 
 
@@ -1241,83 +1014,26 @@ footer {
 /* Page ingrédient */ 
 
 #meals-container-ingredient{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 20px;
-	padding: 20px;
 	border-radius: 10px;
 	width: fit-content;
 	margin: 0 auto;
 	margin-bottom: 20px;
 }
 
-
-.meal-card-ingredient{
-	background: transparent;
-	padding: 15px;
-	width: 250px;
-	text-align: center;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	
-
-}
-
-
-.meal-card-ingredient:hover{
-	background:transparent;
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	color: black;
-	transform: scale(1.5); 
-	box-shadow: 0 6px 12px rgba(145, 62, 62, 0.3);
-	transform: translateY(-8px);
-}
-
-
 .meal-card-ingredient h3{
 	margin: 10px 0;
 }
-.meal-card-ingredient img {
-	width: 100%;
-	border-radius: 10px;
-	object-fit: contain;
-}
-
-.meal-card-ingredient img:hover {
-	transform: scale(1.05);
-	transition: transform 0.5s ease-in-out;
-
-}
-
 
 .btnMealIngredient{
-	margin: 5px;
-	padding: 10px 15px;
-	background-color:#9b3b3b;
-	color: white;
-	font-weight: 400;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
 	text-decoration: none;
 }
 
-.btnMealIngredient:hover {
-	color: #ffffff;
-	background: #080200;
-	transform: scale(1.05);
-	font-weight: 700;
-}
 
 
 /* Responsive Design de la page ingrédient */
 @media (max-width: 992px) {
 	
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.4em;
 		text-align: center;
 		
@@ -1329,7 +1045,7 @@ footer {
 
 @media (max-width: 768px) {
 
-	#TitleCategories{
+	.TitleCategories{
 		font-size: 1.6em;
 		text-align: center;
 		
