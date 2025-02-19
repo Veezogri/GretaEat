@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style2.css">
-    <script src="script.js" defer></script>
+    <script src="../JS/script.js" defer></script>
+    <link rel="stylesheet" href="../css/style2.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
-
 </head>
 <header id="IndexHeader">
   
@@ -21,15 +20,22 @@
     </ul>
 </nav>
       
-        <h2 id="TitleCategories">Découvrez tous nos plats de la catégorie</h2>
+        <h2 id="TitleCategories" class="AnimationTitre">Recherche par ordre alphabétique</h2>
         
   
   </header>
 <body>
-    <div id="meals-container"></div>
+
+    <main>
+        <div id="alphabet-container"> 
+        </div>
+        <div id="meals-container-alphabet" class="meals-grid"></div>
+
+    </main>
+
+    <footer>
+        <p>Projet GretaEat - RIAL Fares</p>
+    </footer>
     
 </body>
-
-<footer>
-    <p>GreatEat - 2021</p>
 </html>

@@ -474,7 +474,7 @@ async function fetchMealsByArea() {
 
 
 async function MealsByIngredient(ingredient){
-    console.log("Ingrédient reçu :", ingredient); // ✅ Vérifier si l’ingrédient est bien passé
+    console.log("Ingrédient reçu :", ingredient); // Vérifier si l’ingrédient est bien passé
 
     try{
         const reponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
@@ -516,5 +516,23 @@ async function MealsByIngredient(ingredient){
 
 
 
+
+
+/* test */ 
+
+module.exports = {
+    loadRandomMeal,
+    setupEventListeners,
+    loadCategories,
+    loadCategoryMeals,
+    loadMealDetails,
+    setupAlphabetButtons,
+    setupSearchFunctionality,
+    fetchMealsByFirstLetter,
+    fetchMealsByName,
+    LoadAreas,
+    fetchMealsByArea,
+    MealsByIngredient
+};
 
 
