@@ -7,6 +7,13 @@
   <link rel="icon" type="image/png" href="../IMGCatégorie/logoGretaEat-removebg-preview.png" />
   <link rel="manifest" href="../JSON/manifest.json"> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js")
+        .then(() => console.log(" Service Worker enregistré"))
+        .catch((err) => console.log(" Service Worker erreur :", err));
+    }
+  </script>
 </head>
 <body>
   <header id="IndexHeader">    
