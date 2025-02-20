@@ -143,8 +143,8 @@ footer {
     font-size: 18px;
     color:#b33b4b;
     border: none;
-    width: 200px; /* ✅ Fixe une largeur standard */
-    text-align: center; /* ✅ Centre le texte */
+    width: 200px; 
+    text-align: center; 
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;

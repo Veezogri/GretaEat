@@ -218,7 +218,7 @@ async function loadMealDetails() {
         //  Vérifier que le conteneur existe
         const mealContainer = document.getElementById("meal-details");
         if (!mealContainer) {
-            console.error("❌ Conteneur 'meal-details' introuvable !");
+            console.error(" Conteneur 'meal-details' introuvable !");
             return;
         }
 
@@ -320,7 +320,7 @@ function setupSearchFunctionality() {
     const mealsContainer = document.getElementById("meals-containerSearch");
     const randomContainer = document.getElementById("container-random");
 
-    if (!searchInput || !searchBtn || !mealsContainer || !randomContainer ) return; // Vérifier si les éléments existent
+    if (!searchInput || !searchBtn || !mealsContainer || !randomContainer ) return; 
 
     // Événement au clic sur le bouton recherche
     searchBtn.addEventListener("click", () => {
@@ -340,7 +340,7 @@ function setupSearchFunctionality() {
         }
     });
 }
-//  Fonction asynchrone pour récupérer les plats par nom
+//  Fonction pour récupérer les plats par nom
 
 async function fetchMealsByName(name) {
     try {
@@ -465,7 +465,7 @@ async function fetchMealsByArea() {
         });
 
     } catch (error) {
-        console.error("❌ Erreur lors de la récupération des plats :", error);
+        console.error(" Erreur lors de la récupération des plats :", error);
         document.getElementById("meals-container").innerHTML = "<p>Une erreur s'est produite lors de la récupération des plats.</p>";
     }
 }
